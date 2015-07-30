@@ -8,22 +8,53 @@
 </head>
 <body>
 <div class="container">
-    <div class="student-list-container">
-        <div class="list-header">
-            <span class="col-sm-5">Student Name</span>
-            <span class="col-sm-3">Student Course</span>
-            <span class="col-sm-2">Student Grade</span>
-            <span class="col-sm-2">Operations</span>
-        </div>
-        <div class="list-body">
-            <h3>No Student Data Available</h3>
-        </div>
+    <div class="page-header">
+        <h1>Student Grade Table</h1>
     </div>
-    <div id="studentForm" class="student-add-form">
-        <input type="text" name="studentName" id="studentName" placeholder="Student Name">
-        <input type="text" name="studentCourse" id="studentCourse" placeholder="Student Course">
-        <input type="text" name="studentGrade" id="studentGrade" placeholder="Student Grade (0-100)">
-        <button type="button">Add Student</button>
+    <div class="student-list-container col-xs-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Student Course</th>
+                    <th>Student Grade</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5"><h3>Student Info Unavailable</h3></td>
+            </tbody>
+            <!--<div class="col-sm-5"></div>-->
+            <!--<div class="col-sm-3">Student Course</div>-->
+            <!--<div class="col-sm-2">Student Grade</div>-->
+            <!--<div class="col-sm-2">Operations</div>-->
+        </table>
+    </div>
+    <div id="studentForm" class="student-add-form col-xs-3">
+        <h4>Add Student</h4>
+        <div class="form-group input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user"></span>
+            </span>
+            <input type="text" class="form-control" name="studentName" id="studentName" placeholder="Student Name">
+        </div>
+        <div class="form-group input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-list-alt"></span>
+            </span>
+            <input type="text" class="form-control" name="studentCourse" id="studentCourse"
+                   placeholder="Student Course">
+        </div>
+        <div class="form-group input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-education"></span>
+            </span>
+            <input type="text" class="form-control" name="studentGrade" id="studentGrade"
+                   placeholder="Student Grade">
+        </div>
+        <button type="button" class="btn btn-success">Add</button>
+        <button type="button" class="btn btn-default">Cancel</button>
     </div>
 </div>
 </body>

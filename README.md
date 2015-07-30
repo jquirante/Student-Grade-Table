@@ -3,12 +3,26 @@ Student Grade Table
 
 ## Version 0.1
 - Scope
-  - This builds off of the concepts explored in the objects prototype
-  - Add button 
-    - adds the current student information, held in the inputs, into the student a student object
-    - adds the new student object into the student array
-  - Displays the current list of students in the display area
-  - calculates the average of all the grades and displays it in the grade average area
+# Instructions
+
+- Assignments will be given out by dev#, where one dev is dev1, and the other is dev2
+- See instructor for dev# designation
+
+# SCOPE
+
+- dev1:
+   - create function to 
+      - add input information into #student_info.  
+      - Style inputs, displays and the header above with bootstrap buttons, forms, grids, etc, when possible.  
+      - Should also add a delete button.  This button will have no function until later.  Delete button should be to the far right side of each student listed
+      - Should add the student into an object, and add that object into a global array: student_array
+- dev2:
+   - create a function that
+       - calculates the average grade of all available students
+       - display the average grade in #grade_average
+   - create a function that
+       - highlights the highest and lowest grades.
+
   
 
 ## Version 0.5

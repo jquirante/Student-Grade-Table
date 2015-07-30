@@ -1,7 +1,15 @@
 # SGT
 Student Grade Table
 
-
+## Version 0.1
+- Scope
+  - This builds off of the concepts explored in the objects prototype
+  - Add button 
+    - adds the current student information, held in the inputs, into the student a student object
+    - adds the new student object into the student array
+  - Displays the current list of students in the display area
+  - calculates the average of all the grades and displays it in the grade average area
+  
 
 ## Version 0.5
 - Scope

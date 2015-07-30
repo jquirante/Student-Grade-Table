@@ -2,7 +2,19 @@
 Student Grade Table
 
 ## Version 0.1
-- Scope
+
+### Description
+Version 0.1 is the starting point of the Student Grade Table Project. LearningFuze has provided a base structure that
+includes HTML structure that will need to be updated with boostrap classes. For this version we are looking to see that you
+understand how to style an application with bootstrap, take input values and apply them to objects, and update the DOM
+with a visual of those objects stored.
+## Scope
+    - Styling
+        - Apply bootstrap button style to all <a href="http://getbootstrap.com/css/#buttons">buttons</a> & <a href="http://getbootstrap.com/css/#forms" target="_blank">form elements</a>
+        - Apply bootstrap structure and <a href="http://getbootstrap.com/css/#tables" target="_blank">table styling</a>
+    - JS Functionality
+        - Save form elements data into an object on click of add student button
+        - Display all added student data into the table structure in the DOM
 # Instructions
 
 - Assignments will be given out by dev#, where one dev is dev1, and the other is dev2

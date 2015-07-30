@@ -1,4 +1,4 @@
-# c4_SGT
+# SGT
 Student Grade Table
 
 

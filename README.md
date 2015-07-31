@@ -11,11 +11,11 @@ with a visual of those objects stored.
     - Apply bootstrap styling to all <a href="http://getbootstrap.com/css/#buttons">buttons</a> & <a href="http://getbootstrap.com/css/#forms" target="_blank">form elements</a>
     - Apply bootstrap <a href="http://getbootstrap.com/css/#tables" target="_blank">table styling</a>
     - Emulate below visual pixel perfect. <b>Please note that no additional style sheets have been added</b>
-    #### Mobile
+#### Mobile
     <img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/mobile.tiff?token=AI9hkFeVMR6630Zhi5vEs5f3ejV8gZacks5VxQy9wA%3D%3D" width="200"/>
-    #### No Data
+#### No Data
     <img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/reset.jpg.tiff?token=AI9hkKDrC2QpgH829LtGeFzqoDmPIIy-ks5VxQzjwA%3D%3D" width="200"/>
-    #### Data
+#### Data
     <img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/students.tiff?token=AI9hkLxK6v_5Vnq5KbSJXlYjj-5_q8Nfks5VxQzwwA%3D%3D" width="200"/>
 - JS Functionality
     - Build out all functions & variables based on jsDoc (<a href="https://en.wikipedia.org/wiki/JSDoc" target="_blank">What is this?</a>) comments inside the script.js file

@@ -35,32 +35,32 @@ with a visual of those objects stored.
 <img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/students.jpg?token=AI9hkPagLFgQMOi1nua2ntSk_vYoGAT9ks5VxQ-awA%3D%3D" width="500"/>
 
 ### Assignments - A.K.A criteria for success on this version of the project
-- Choose a Lead developer among your paired programming team
-    - Lead developer should fork <a href="https://github.com/Learning-Fuze/SGT">SGT</a> repo
-    - <b>Both developers will be working off the same forked repo of the Lead Developers</b>
-- Clone forked repo to each persons local computer
-- On the repo of the Lead developers, create issues for line items listed under the scope heading above.
-    - Can you not see the issues tab on the Lead Developer Repo?
-        - Lead Developer go to settings tab
-        - Under features header click the checkbox next to Issues
-    - Issues should be created without being assigned to a specific user
-    - <b>Start working on issues</b>
-        - User goes through open issue list and assigns themselves an issue
-        - Create new branch for current issue
-            - start from master branch `git checkout master`
-            - Create branch with this command `git checkout -b [relevent_issue_name]` <b>Replace [relevent_issue_name] with descriptive branch name</b>
-        - Start coding
-        - Test Code
-        - Add, Commit, Push
-        - Create Pull request in Github to [forked_repo]/master branch
-            - Assign to another developer working on the project
-            - Review Pull request
-                - Collaborate on PR - Comment on any issues or questions
-            - Assigned User merges PR into [forked_repo] - master
-    - If More issues
-        - Goto above - Start working on issues
-    - Else
-        - Create Pull request from [forked_repo] - master to LearningFuze/SGT - [team_name_branch]
-    - Ready for Peer Review
+1. Choose a Lead developer among your paired programming team
+    1. Lead developer should fork <a href="https://github.com/Learning-Fuze/SGT">SGT</a> repo
+    1. <b>Both developers will be working off the same forked repo of the Lead Developers</b>
+1. Clone forked repo to each persons local computer
+1. On the repo of the Lead developers, create issues for line items listed under the scope heading above.
+    1. Can you not see the issues tab on the Lead Developer Repo?
+        1. Lead Developer go to settings tab
+        1. Under features header click the checkbox next to Issues
+    1. Issues should be created without being assigned to a specific user
+    1. <b>Start working on issues</b>
+        1. User goes through open issue list and assigns themselves an issue
+        1. Create new branch for current issue
+            1. start from master branch `git checkout master`
+            1. Create branch with this command `git checkout -b [relevent_issue_name]` <b>Replace [relevent_issue_name] with descriptive branch name</b>
+        1. Start coding
+        1. Test Code
+        1. Add, Commit, Push
+        1. Create Pull request in Github to [forked_repo]/master branch
+            1. Assign to another developer working on the project
+            1. Review Pull request
+                1. Collaborate on PR - Comment on any issues or questions
+            1. Assigned User merges PR into [forked_repo] - master
+    1. If More issues
+        1. Goto above - Start working on issues
+    1. Else
+        1. Create Pull request from [forked_repo] - master to LearningFuze/SGT - [team_name_branch]
+    1. Ready for Peer Review
      
 

@@ -46,6 +46,7 @@ function addStudent() {
     //add newly created object to the global student array
     student_array.push(obj);
 
+    //clear values from form inputs
     clearAddStudentForm();
 
     //call function to update the visual data
@@ -69,6 +70,7 @@ function clearAddStudentForm() {
  * @returns {number}
  */
 function calculateAverage() {
+    //define local variables for calculation
     var avg = 0;
     var total = 0;
 
@@ -88,7 +90,7 @@ function calculateAverage() {
  */
 function updateData() {
 
-    //calculate value and update the DOM
+    //get calculated value and update the DOM with this value
     var average = calculateAverage();
     $('.avgGrade').html(average);
 
@@ -104,7 +106,7 @@ function updateStudentList() {
     //empty out the current student list
     $('.student-list tbody').html('');
 
-    //when the student array is empty, update the student table with a message of User Info Unavailable
+    //when the student array is empty, update the student table with a message of "User Info Unavailable"
     if (student_array.length == 0) {
         var userUnavailableRow = $('<td>').attr("colspan", 5).append($('<h3>').html("User Info Unavailable"));
         $('.student-list tbody').html(userUnavailableRow);

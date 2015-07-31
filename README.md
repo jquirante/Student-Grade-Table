@@ -1,23 +1,32 @@
-# SGT
-Student Grade Table
+# SGT - Student Grade Table
 
 ## Version 0.1
-
-### Description
+#### Description
 Version 0.1 is the starting point of the Student Grade Table Project. LearningFuze has provided a base structure that
 includes HTML structure that will need to be updated with boostrap classes. For this version we are looking to see that you
 understand how to style an application with bootstrap, take input values and apply them to objects, and update the DOM
 with a visual of those objects stored.
-## Scope
+### Scope
 - Styling
-    - Apply bootstrap button style to all <a href="http://getbootstrap.com/css/#buttons">buttons</a> & <a href="http://getbootstrap.com/css/#forms" target="_blank">form elements</a>
-    - Apply bootstrap structure and <a href="http://getbootstrap.com/css/#tables" target="_blank">table styling</a>
-    - Emulate below visual pixel perfect. Please note that no additional style sheets have been added
+    - Apply bootstrap styling to all <a href="http://getbootstrap.com/css/#buttons">buttons</a> & <a href="http://getbootstrap.com/css/#forms" target="_blank">form elements</a>
+    - Apply bootstrap <a href="http://getbootstrap.com/css/#tables" target="_blank">table styling</a>
+    - Emulate below visual pixel perfect. <b>Please note that no additional style sheets have been added</b>
 - JS Functionality
-    - Save form elements data into an object on click of add student button
-    - Display all added student data into the table structure in the DOM
-    - Reset application to default state
+    - Build out all functions & variables based on jsDoc (<a href="https://en.wikipedia.org/wiki/JSDoc" target="_blank">What is this?</a>) comments inside the script.js file
+    - Form
+        - On click of add button
+            - call appropriate function in on click attribute
+            - Add values inside the form into an object and store that object in the student_array global variable
+            - Display all student data stored in the student_array inside the bootstrap table structure
+            - Clear values inside the form elements
+        - On click of cancel button
+            - Clear values inside the form elements
+    - on Dom Load
+        - Reset application to its default state
+        - Display all student data stored in the student_array inside the bootstrap table structure
+    - on update of student data, calculate and show average student grade rounded to the nearest whole number and display inside .avgGrade element
 
+### Assignments
 
 - Assignments will be given out by dev#, where one dev is dev1, and the other is dev2
 - See instructor for dev# designation

@@ -30,9 +30,9 @@ with a visual of those objects stored.
 #### Mobile
 <img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/mobile.tiff?token=AI9hkFeVMR6630Zhi5vEs5f3ejV8gZacks5VxQy9wA%3D%3D" width="200"/>
 #### No Data
-<img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/reset.jpg.tiff?token=AI9hkKDrC2QpgH829LtGeFzqoDmPIIy-ks5VxQzjwA%3D%3D" width="200"/>
+<img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/reset.jpg.tiff?token=AI9hkKDrC2QpgH829LtGeFzqoDmPIIy-ks5VxQzjwA%3D%3D" width="500"/>
 #### Data
-<img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/students.tiff?token=AI9hkLxK6v_5Vnq5KbSJXlYjj-5_q8Nfks5VxQzwwA%3D%3D" width="200"/>
+<img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/students.tiff?token=AI9hkLxK6v_5Vnq5KbSJXlYjj-5_q8Nfks5VxQzwwA%3D%3D" width="500"/>
 
 ### Assignments - A.K.A criteria for success on this version of the project
 - Choose a Lead developer among your paired programming team

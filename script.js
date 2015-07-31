@@ -1,12 +1,18 @@
 /**
  * Define all global variables here
  */
+var student_array = [];
 
 /**
  * addStudent - creates a student objects based on input fields in the form and adds the object to global student array
  *
  * @return undefined
  */
+function addStudent(){
+    var obj = {};
+    var inputIds = ['studentName', 'studentCourse', 'studentGrade'];
+
+}
 
 /**
  * calculateAverage - loop through the global student array and calculate average grade and return that value

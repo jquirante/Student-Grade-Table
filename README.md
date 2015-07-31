@@ -28,11 +28,11 @@ with a visual of those objects stored.
 
 ### Design
 #### Mobile appearance
-<img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/mobile.jpg?token=AI9hkBSFYFAUeQolU9eKe92fT3jzgYQxks5VxSTOwA%3D%3D" width="200"/>
+<img src="https://raw.githubusercontent.com/ej020586/SGT/assets/assets/mobile.jpg?token=AI9hkOgkuknnXmKv3pFzH845UEHdrbkrks5VxSdcwA%3D%3D" width="200"/>
 #### No Data available appearance
-<img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/reset.jpg?token=AI9hkE81Jx5IyQa12mLVf9YLC64Sr13Cks5VxSTgwA%3D%3D" width="500"/>
+<img src="https://raw.githubusercontent.com/ej020586/SGT/assets/assets/reset.jpg?token=AI9hkNznIyQEkXGWQJnVFW7avPUKhMKkks5VxSeiwA%3D%3D" width="500"/>
 #### Data available appearance
-<img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/students.jpg?token=AI9hkMqK2ANPDfmIzwAzrobpMW6sC7ajks5VxSTswA%3D%3D" width="500"/>
+<img src="https://raw.githubusercontent.com/ej020586/SGT/assets/assets/students.jpg?token=AI9hkL6FrCNwA4sCd5lospYmoXhix2Pgks5VxSevwA%3D%3D" width="500"/>
 
 ### Assignments - A.K.A criteria for success on this version of the project
 1. Choose a Lead developer among your paired programming team

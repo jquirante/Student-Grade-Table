@@ -26,106 +26,33 @@ with a visual of those objects stored.
         - Display all student data stored in the student_array inside the bootstrap table structure
     - on update of student data, calculate and show average student grade rounded to the nearest whole number and display inside .avgGrade element
 
-### Assignments
-
-- Assignments will be given out by dev#, where one dev is dev1, and the other is dev2
-- See instructor for dev# designation
-
-# SCOPE
-
-- dev1:
-   - create function to 
-      - add input information into #student_info.  
-      - Style inputs, displays and the header above with bootstrap buttons, forms, grids, etc, when possible.  
-      - Should also add a delete button.  This button will have no function until later.  Delete button should be to the far right side of each student listed
-      - Should add the student into an object, and add that object into a global array: student_array
-- dev2:
-   - create a function that
-       - calculates the average grade of all available students
-       - display the average grade in #grade_average
-   - create a function that
-       - highlights the highest and lowest grades.
-
-  
-
-## Version 0.5
-- Scope
-  - Fork your paired programming repo to your own account
-  - Complete any remaining functionality from v0.1 scope
-  - Incorporate the delete functionality developed in your <a href='https://github.com/Learning-Fuze/prototypes/tree/master/js-deletion' target='_blank'>JS deletion prototype, and incorpoate</a>
-    - Delete button should delete the element
-    - Delete button should delete the linked student object from the array
-
-## Version 1.0
-- Scope
-  - Call student data from the url 
-    - http://s-apis.learningfuze.com/sgt/get
-  - Display all students retrieved from the server data
-  - EXTRA - Allow locally added students and server added students to both be displayed
-  - EXTRA - If a student's ID already exists, do not add the student to the local information
-
-## Version 2.0
-- Scope
-  - Send student data to the following url
-    - http://s-apis.learningfuze.com/sgt/create
-    - Input: POST data:
-      - name: string- the student's name
-      - grade: number- the student's grade
-      - course: string- the student's course name
-    - Output: JSON encoded string
-      - success:
-        - true: the operation was successful
-        - false: the operation was not successful
-      - errors:
-        - an array of errors that occurred
-      - new_id: (on success): a number representing the new student ID for the added student
-  - Read all data from server on student addition
-  - EXTRA: periodically check the server for new information
-  - EXTRA: Allow data to be sorted by name, grade, or course in reverse or forward order
-
-## Version 2.5
-- Scope
-  - Add auto-complete functionality to the course field
-    - When any letter is pressed
-      - use the keyup event
-    - check the server for a list of courses that match the current text
-      - request address http://s-apis.learningfuze.com/sgt/courses
-      - inputs:
-        - course: a string used for a partial text match
-        - (optional) search_type: whether to do full or partial searches
-          - full: search full text of course
-          - partial (or nothing): search course text from beginning only
-      - outputs:
-        - success: boolean value - whether the request completed successfully
-        - errors: array of strings, each representing an error
-        - data: array of objects
-          - course: string containing matching course name
-    - below the input, 
-      - display a ul with lis 
-      - one li for each option returned in data above
-      - clicking on an li will input that value into the course input field directly
-
-## Version 3.0
-- Scope
-  - Add functionality to the delete button:
-    - User should be able to select a single student to be deleted.
-    - Either a single button for each student
-    - Or some way to select a user and press a single delete button
-  - Send delete request to server 
-    - request address http://s-apis.learningfuze.com/sgt/delete
-    - inputs:
-      - student_id: id of the student to be deleted
-    - outputs:
-      - success: boolean value - whether the request completed successfully
-      - errors: array of strings, each representing an error
-  - Make the row unclickable / undeletable while waiting for the server response
-  - Display some visual indication that the row is busy
-    - for example, a spinning wait symbol in place of the delete button's normal text / graphic 
-  - Upon confirmation of success of deletion of the current student
-    - delete the current student
-      - add a visual effect to the row to show it is being deleted
-         - for example, the row shrinks away or collapses
-      - delete the student from the student object list
-    - do not refresh the student list after deletion
+### Assignments - A.K.A criteria for success on this version of the project
+- Choose a Lead developer among your paired programming team
+    - Lead developer should fork <a href="https://github.com/Learning-Fuze/SGT">SGT</a> repo
+    - <b>Both developers will be working off the same forked repo of the Lead Developers</b>
+- Clone forked repo to each persons local computer
+- On the repo of the Lead developers, create issues for line items listed under the scope heading above.
+    - Can you not see the issues tab on the Lead Developer Repo?
+        - Lead Developer go to settings tab
+        - Under features header click the checkbox next to Issues
+    - Issues should be created without being assigned to a specific user
+    - <b>Start working on issues</b>
+        - User goes through open issue list and assigns themselves an issue
+        - Create new branch for current issue
+            - start from master branch `git checkout master`
+            - Create branch with this command `git checkout -b [relevent_issue_name]` <b>Replace [relevent_issue_name] with descriptive branch name</b>
+        - Start coding
+        - Test Code
+        - Add, Commit, Push
+        - Create Pull request in Github to [forked_repo]/master branch
+            - Assign to another developer working on the project
+            - Review Pull request
+                - Collaborate on PR - Comment on any issues or questions
+            - Assigned User merges PR into [forked_repo] - master
+    - If More issues
+        - Goto above - Start working on issues
+    - Else
+        - Create Pull request from [forked_repo] - master to LearningFuze/SGT - [team_name_branch]
+    - Ready for Peer Review
      
 

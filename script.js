@@ -56,7 +56,7 @@ function updateData(){
 
     //calculate value and update the DOM
     var average = calculateAverage();
-    $('#avgGrade').html(average);
+    $('.avgGrade').html(average);
 
     //update student list
     updateStudentList();

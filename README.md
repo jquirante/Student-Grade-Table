@@ -27,11 +27,11 @@ with a visual of those objects stored.
     - on update of student data, calculate and show average student grade rounded to the nearest whole number and display inside .avgGrade element
 
 ### Design
-#### Mobile
+#### Mobile appearance
 <img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/mobile.jpg?token=AI9hkJtlQu-Tk6MeeUDduXlhGFOW0eIWks5VxQ97wA%3D%3D" width="200"/>
-#### No Data
+#### No Data available appearance
 <img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/reset.jpg?token=AI9hkD5h_SMETemS6IvfRl6D_k4vqgxtks5VxQ-LwA%3D%3D" width="500"/>
-#### Data
+#### Data available appearance
 <img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/students.jpg?token=AI9hkPagLFgQMOi1nua2ntSk_vYoGAT9ks5VxQ-awA%3D%3D" width="500"/>
 
 ### Assignments - A.K.A criteria for success on this version of the project

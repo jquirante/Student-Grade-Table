@@ -25,6 +25,7 @@ with a visual of those objects stored.
         - Reset application to its default state
         - Display all student data stored in the student_array inside the bootstrap table structure
     - on update of student data, calculate and show average student grade rounded to the nearest whole number and display inside .avgGrade element
+
 ### Design
 #### Mobile
 <img src="https://raw.githubusercontent.com/ej020586/SGT/v.1/assets/mobile.tiff?token=AI9hkFeVMR6630Zhi5vEs5f3ejV8gZacks5VxQy9wA%3D%3D" width="200"/>

@@ -38,12 +38,13 @@ with a visual of those objects stored.
 1. Choose a Lead developer among your paired programming team
     1. Lead developer should fork <a href="https://github.com/Learning-Fuze/SGT">SGT</a> repo
     1. <b>Both developers will be working off the same forked repo of the Lead Developers</b>
-1. Clone forked repo to each persons local computer
+1. Team Lead Clone forked repo to local computer
 1. Run these commands
     - `git checkout v.1`
     - `git branch -D master`
     - `git checkout -b master`
     - `git push origin master`
+1. Team memeber(s) clone forked repo to their respective local computers
 1. On the repo of the Lead developers, create issues for line items listed under the scope heading above.
     1. Can you not see the issues tab on the Lead Developer Repo?
         1. Lead Developer go to settings tab

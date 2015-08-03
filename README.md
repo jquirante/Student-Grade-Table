@@ -43,7 +43,7 @@ with a visual of those objects stored.
     - `git checkout v.1`
     - `git branch -D master`
     - `git checkout -b master`
-    - `git push origin master`
+    - `git push -f origin master`
 1. Team memeber(s) clone forked repo to their respective local computers
 1. On the repo of the Lead developers, create issues for line items listed under the scope heading above.
     1. Can you not see the issues tab on the Lead Developer Repo?

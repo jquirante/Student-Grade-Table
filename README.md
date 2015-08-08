@@ -10,3 +10,19 @@ with a visual of those objects stored.
 - <a href="https://github.com/Learning-Fuze/SGT/tree/v.1#scope">View Scope</a>
 - <a href="https://github.com/Learning-Fuze/SGT/tree/v.1#design">View Design</a>
 - <a href="https://github.com/Learning-Fuze/SGT/tree/v.1#assignments---aka-criteria-for-success-on-this-version-of-the-project">View Assignments</a>
+
+## Version 0.5
+#### Description
+Version 0.5 starts where v.1 left off with adding in the delete functionality. When clicking on the delete button we need to add an event handler that will remove the current row
+from the DOM only after we have successfully remove the object from the array.
+
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v.5/README.md#scope">View Scope</a>
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v.5/README.md#assignments---aka-criteria-for-success-on-this-version-of-the-project">View Assignments</a>
+
+## Version 1.0
+#### Description
+Version 1.0 is where we start integrating server data dynamically. When the page loads we will be looking to pull in data through a pre defined API. Once the data hase been received
+we will determine if the data is correctly formatted then iterate through the data to display it in the DOM.
+
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#scope">View Scope</a>
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#assignments---aka-criteria-for-success-on-this-version-of-the-project">View Assignments</a>

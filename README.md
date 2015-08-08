@@ -28,7 +28,7 @@ with a visual of those objects stored.
 
 ### Design
 #### Mobile appearance
-<img src="https://raw.githubusercontent.com/ej020586/SGT/assets/assets/mobile.jpg?token=AI9hkOgkuknnXmKv3pFzH845UEHdrbkrks5VxSdcwA%3D%3D" width="200"/>
+<img src="https://raw.githubusercontent.com/ej020586/SGT/assets/assets/mobile.jpg?token=AI9hkD3AD6-pZaN2WBLsDwVe5n7qDVM6ks5VzozCwA%3D%3D" width="200"/>
 #### No Data available appearance
 <img src="https://raw.githubusercontent.com/ej020586/SGT/assets/assets/reset.jpg?token=AI9hkNznIyQEkXGWQJnVFW7avPUKhMKkks5VxSeiwA%3D%3D" width="500"/>
 #### Data available appearance

@@ -28,11 +28,11 @@ with a visual of those objects stored.
 
 ### Design
 #### Mobile appearance
-<img src="https://github.com/ej020586/SGT/blob/assets/assets/mobile.jpg" width="200"/>
+<img src="https://cloud.githubusercontent.com/assets/10343746/9148427/0384d076-3d30-11e5-83ff-4d10ae2daf70.png" width="200"/>
 #### No Data available appearance
-<img src="https://github.com/ej020586/SGT/blob/assets/assets/reset.jpg" width="500"/>
+<img src="https://cloud.githubusercontent.com/assets/10343746/9148435/1d8f2bc4-3d30-11e5-926d-72a2a086fd8b.png" width="500"/>
 #### Data available appearance
-<img src="https://github.com/ej020586/SGT/blob/assets/assets/students.jpg" width="500"/>
+<img src="https://cloud.githubusercontent.com/assets/10343746/9148437/22e2566e-3d30-11e5-9401-ba2cb8309d65.png" width="500"/>
 
 ### Assignments - A.K.A criteria for success on this version of the project
 1. Choose a Lead developer among your paired programming team

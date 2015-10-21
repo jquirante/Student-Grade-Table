@@ -25,7 +25,7 @@ with a visual of those objects stored.
         - `git pull origin master` - **Now continue with the next steps**
 > - Create a feature branch
     - `git checkout -b v0.1`
-> - Work on the scope defined <a href="">Below</a>
+> - Work on the scope defined <a href="https://github.com/Learning-Fuze/SGT/tree/v.1#scope">Below</a>
 > - Add files to git
     - `git add .`
 > - Commit files (Group files together)

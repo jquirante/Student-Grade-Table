@@ -25,5 +25,5 @@ from the array.
 #### Description
 Version 1.0 picks up where 0.5 left off. You will now be populating records from a database via the LearningFuze SGT API. This version will only be pulling entries, you will not be adding anything to the database for this version. You should still be able to add entries locally as you did before.
 
--<a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#getting-started" target="_blank">Getting Started</a>
--<a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#scope" target="_blank">View Scope</a>
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#getting-started" target="_blank">Getting Started</a>
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#scope" target="_blank">View Scope</a>

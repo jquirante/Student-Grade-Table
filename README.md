@@ -37,7 +37,3 @@ Version 2.0 adds more CRUD functionality.  Previously you added R (Read), and no
 
 - <a href="https://github.com/Learning-Fuze/SGT/tree/v2.0#getting-started" target="_blank">Getting Started</a>
 - <a href="https://github.com/Learning-Fuze/SGT/tree/v2.0#scope" target="_blank">View Scope</a>
-
-
-549 89 6147
-March 8th 1975

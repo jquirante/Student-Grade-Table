@@ -27,3 +27,17 @@ Version 1.0 picks up where 0.5 left off. You will now be populating records from
 
 - <a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#getting-started" target="_blank">Getting Started</a>
 - <a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#scope" target="_blank">View Scope</a>
+
+## Version 2.0
+#### Description
+Version 2.0 adds more CRUD functionality.  Previously you added R (Read), and now you will be adding Create and Delete functionality. You will now be adding records to a database via the LearningFuze SGT API. 
+- This version will 
+  - add onto your existing add functionality.  So it should not only add the student locally, but also send them to the server.
+  - delete an existing student from the database.  This should build off your existing delete functionality.  Remember to take into account a useful User Experience when planning out how to tie in the delete functionality.
+
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v2.0#getting-started" target="_blank">Getting Started</a>
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v2.0#scope" target="_blank">View Scope</a>
+
+
+549 89 6147
+March 8th 1975

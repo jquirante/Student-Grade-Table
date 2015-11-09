@@ -27,3 +27,10 @@ Version 1.0 picks up where 0.5 left off. You will now be populating records from
 
 - <a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#getting-started" target="_blank">Getting Started</a>
 - <a href="https://github.com/Learning-Fuze/SGT/tree/v1.0#scope" target="_blank">View Scope</a>
+
+## Version 2.0
+#### Description
+Version 2.0 adds more CRUD functionality.  Previously you added R (Read), and now you will be adding Create and Delete functionality. You will now be adding records to a database via the LearningFuze SGT API.
+
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v2.0#getting-started" target="_blank">Getting Started</a>
+- <a href="https://github.com/Learning-Fuze/SGT/tree/v2.0#scope" target="_blank">View Scope</a>

@@ -5,14 +5,7 @@ includes HTML structure that will need to be updated with boostrap classes. For 
 understand how to style an application with bootstrap, take input values and apply them to objects, and update the DOM
 with a visual of those objects stored.
 
-> ##### Related Reading
-> - Coming Soon
 
-> ##### Related Videos
-> - Coming Soon
-
-> ##### Related Prototypes
-> - Coming Soon
 
 ## Getting Started
 > - Are you on your master branch?

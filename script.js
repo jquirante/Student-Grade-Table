@@ -103,11 +103,7 @@ function renderGradeAverage(){
 * @returns {number} the average of all the students
 function calculateGradeAverage(){
 }
-/***************************************************************************************************
- * updateStudentList - loops through global student array and appends each objects data into the student-list-container > list-body
- */
-function updateStudentList(){
-}
+
 
 
 

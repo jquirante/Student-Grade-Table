@@ -98,11 +98,7 @@ function calculateGradeAverage(){
  */
 function renderGradeAverage(){
 }
-/***************************************************************************************************
-* @params {array} students   the array of students
-* @returns {number} the average of all the students
-function calculateGradeAverage(){
-}
+
 
 
 

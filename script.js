@@ -5,7 +5,7 @@
 /**
  * Listen for the document to load and initialize the application
  */
-$(document).ready();
+$(document).ready(initializeApp);
 
 /**
  * Define all global variables here.  
@@ -19,6 +19,7 @@ $(document).ready();
  *  { name: 'Jill', course: 'Comp Sci', grade: 85 }
  * ];
  */
+var student_array = [];
 
 /***************************************************************************************************
 * initializeApp 
@@ -27,6 +28,8 @@ $(document).ready();
 * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
 */
 function initializeApp(){
+      console.log('init');
+      addClickHandlersToElements();
 }
 
 /***************************************************************************************************
@@ -36,6 +39,9 @@ function initializeApp(){
 *     
 */
 function addClickHandlersToElements(){
+      console.log('add click handlers');
+      $('.btn-success').on('click', handleAddClicked);
+      $('.btn-default').on('click', handleCancelClick);
 }
 
 /***************************************************************************************************
@@ -45,6 +51,8 @@ function addClickHandlersToElements(){
        none
  */
 function handleAddClicked(){
+      console.log('handle add click');
+      addStudent();
 }
 /***************************************************************************************************
  * handleCancelClicked - Event Handler when user clicks the cancel button, should clear out student form
@@ -53,6 +61,8 @@ function handleAddClicked(){
  * @calls: clearAddStudentFormInputs
  */
 function handleCancelClick(){
+      console.log('handle cancel click');
+      clearAddStudentFormInputs();
 }
 /***************************************************************************************************
  * addStudent - creates a student objects based on input fields in the form and adds the object to global student array
@@ -61,18 +71,56 @@ function handleCancelClick(){
  * @calls clearAddStudentFormInputs, updateStudentList
  */
 function addStudent(){
+      console.log('add student');
+      var newStudent = {};
+      newStudent.name = $('#studentName').val();
+      newStudent.course = $('#course').val();
+      newStudent.grade = $('#studentGrade').val();
+      newStudent.operation;
+      student_array.push(newStudent);
+      updateStudentList(student_array);
+      clearAddStudentFormInputs();
+      
 }
 /***************************************************************************************************
  * clearAddStudentForm - clears out the form values based on inputIds variable
  */
 function clearAddStudentFormInputs(){
+      console.log('clear add student');
+      $('input').val('');
+
 }
 /***************************************************************************************************
  * renderStudentOnDom - take in a student object, create html elements from the values and then append the elements
  * into the .student_list tbody
  * @param {object} studentObj a single student object with course, name, and grade inside
  */
-function renderStudentOnDom(){
+function renderStudentOnDom(studentObject){
+      
+      var tableRow = $('<tr>');
+
+      for (var property in studentObject) {
+            var tableHead = $('<td>', {
+               class: 'col-xs-3',
+               text: studentObject[property],
+            });
+            tableRow.append(tableHead);
+      }
+      
+      var deleteContainer = $('<td>', {
+            class: 'col-xs-3', 
+      });
+      
+      var deleteButton = $('<button>', {
+            class: 'btn btn-danger',
+            'text-align': 'center',
+            text: 'Delete',
+      });
+
+      deleteContainer.append(deleteButton);
+      tableRow.append(deleteContainer);
+      $('.student-list tbody').append(tableRow);
+      
 }
 
 /***************************************************************************************************
@@ -81,7 +129,13 @@ function renderStudentOnDom(){
  * @returns {undefined} none
  * @calls renderStudentOnDom, calculateGradeAverage, renderGradeAverage
  */
-function updateStudentList(){
+function updateStudentList(studentArray){
+      $('.student-list tbody tr').remove();
+      console.log('updateStudentList');
+      for ( var student = 0; student < studentArray.length; student++ ) {
+            renderStudentOnDom(studentArray[student]); 
+      }
+      renderGradeAverage(calculateGradeAverage(studentArray));
   
 }
 /***************************************************************************************************
@@ -89,14 +143,23 @@ function updateStudentList(){
  * @param: {array} students  the array of student objects
  * @returns {number}
  */
-function calculateGradeAverage(){
+function calculateGradeAverage(studentArray){
+      console.log('calculateGradeAverage');
+      var gradeTotal=null;
+      for ( var student = 0; student < studentArray.length; student++ ) {
+            gradeTotal+=parseInt(studentArray[student].grade); 
+      }
+      console.log(gradeTotal/studentArray.length);
+      return gradeTotal/studentArray.length;
 }
 /***************************************************************************************************
  * renderGradeAverage - updates the on-page grade average
  * @param: {number} average    the grade average
  * @returns {undefined} none
  */
-function renderGradeAverage(){
+function renderGradeAverage(numberAverage){
+      $('.avgGrade').text(numberAverage);
+      console.log('renderGradeAvg');
 }
 
 

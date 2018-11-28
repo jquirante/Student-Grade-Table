@@ -42,6 +42,7 @@ function addClickHandlersToElements(){
       console.log('add click handlers');
       $('.btn-success').on('click', handleAddClicked);
       $('.btn-default').on('click', handleCancelClick);
+      
 }
 
 /***************************************************************************************************
@@ -115,11 +116,24 @@ function renderStudentOnDom(studentObject){
             class: 'btn btn-danger',
             'text-align': 'center',
             text: 'Delete',
+            on: {
+                  click: handleDeleteButton,
+            }
       });
 
       deleteContainer.append(deleteButton);
       tableRow.append(deleteContainer);
       $('.student-list tbody').append(tableRow);
+
+      function handleDeleteButton() {
+            var studentIndex = student_array.indexOf(studentObject);
+            student_array.splice(studentIndex,1);
+            $(this).closest('tr').remove();
+
+            calculateGradeAverage(student_array);
+            
+      }
+      
       
 }
 
@@ -135,7 +149,7 @@ function updateStudentList(studentArray){
       for ( var student = 0; student < studentArray.length; student++ ) {
             renderStudentOnDom(studentArray[student]); 
       }
-      renderGradeAverage(calculateGradeAverage(studentArray));
+      calculateGradeAverage(studentArray);
   
 }
 /***************************************************************************************************
@@ -144,13 +158,14 @@ function updateStudentList(studentArray){
  * @returns {number}
  */
 function calculateGradeAverage(studentArray){
+      debugger;
       console.log('calculateGradeAverage');
       var gradeTotal=null;
       for ( var student = 0; student < studentArray.length; student++ ) {
             gradeTotal+=parseInt(studentArray[student].grade); 
       }
-      console.log(gradeTotal/studentArray.length);
-      return gradeTotal/studentArray.length;
+      renderGradeAverage(gradeTotal/studentArray.length);
+      
 }
 /***************************************************************************************************
  * renderGradeAverage - updates the on-page grade average
@@ -158,11 +173,19 @@ function calculateGradeAverage(studentArray){
  * @returns {undefined} none
  */
 function renderGradeAverage(numberAverage){
-      $('.avgGrade').text(numberAverage);
+      
+      if(student_array.length > 0) {
+            $('.avgGrade').text(numberAverage);
+      } else {
+            $('.avgGrade').text(0);
+      }
+
+      
       console.log('renderGradeAvg');
 }
 
 
 
+/**** */
 
 

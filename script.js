@@ -42,7 +42,7 @@ function addClickHandlersToElements(){
       console.log('add click handlers');
       $('.btn-success').on('click', handleAddClicked);
       $('.btn-default').on('click', handleCancelClick);
-      
+      $('.btn-info').on('click', handleGetData);
 }
 
 /***************************************************************************************************
@@ -189,3 +189,19 @@ function renderGradeAverage(numberAverage){
 /**** */
 
 
+function handleGetData() {
+      console.log('get data');
+      var ajaxOptions = {
+            dataType: 'json',
+            url: 'http://s-apis.learningfuze.com/sgt/get',
+            method: 'post',
+            data: {
+                  api_key: 'in0MdAd42k',
+            }
+
+      };
+
+      $.ajax(ajaxOptions).then(function(response){
+            console.log(response);
+      });
+}

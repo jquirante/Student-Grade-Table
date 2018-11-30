@@ -19,7 +19,7 @@ $(document).ready(initializeApp);
  *  { name: 'Jill', course: 'Comp Sci', grade: 85 }
  * ];
  */
-var student_array = [];
+var student_array;
 
 /***************************************************************************************************
 * initializeApp 
@@ -30,6 +30,7 @@ var student_array = [];
 function initializeApp(){
       console.log('init');
       addClickHandlersToElements();
+      handleGetData();
 }
 
 /***************************************************************************************************
@@ -79,6 +80,7 @@ function addStudent(){
       newStudent.grade = $('#studentGrade').val();
       newStudent.operation;
       student_array.push(newStudent);
+      addStudentToServer(newStudent.name, newStudent.course, newStudent.grade);
       updateStudentList(student_array);
       clearAddStudentFormInputs();
       
@@ -98,15 +100,44 @@ function clearAddStudentFormInputs(){
  */
 function renderStudentOnDom(studentObject){
       
-      var tableRow = $('<tr>');
+      var tableRow = $('<tr>', {
+            // display: 'inline-block',
+            class: 'col-xs-12',
+      });
 
-      for (var property in studentObject) {
-            var tableHead = $('<td>', {
-               class: 'col-xs-3',
-               text: studentObject[property],
-            });
-            tableRow.append(tableHead);
-      }
+      var divider = $('<hr />');
+
+      tableRow.append(divider);
+      // console.log('datastudent', tableRow[0]);
+
+      var tableName = $('<td>', {
+            class: 'col-xs-3',
+            text: studentObject.name,
+      });
+
+      var tableCourse = $('<td>', {
+            class: 'col-xs-6',
+            text: studentObject.course,
+      });
+
+      var gradeContainer = $('<div>', {
+            css: { 
+                  display: 'inline-block',
+                  position: 'relative',
+                  'text-align': 'center',
+                  width: '60%',
+            },
+            text: studentObject.grade,
+      });
+
+      var tableGrade = $('<td>', {
+            class: 'col-xs-3',
+            
+      });
+
+      tableGrade.append(gradeContainer);
+     
+      tableRow.append(tableName, tableCourse, tableGrade);
       
       var deleteContainer = $('<td>', {
             class: 'col-xs-3', 
@@ -114,8 +145,9 @@ function renderStudentOnDom(studentObject){
       
       var deleteButton = $('<button>', {
             class: 'btn btn-danger',
-            'text-align': 'center',
+            // 'text-align': 'center',
             text: 'Delete',
+            'data-student': studentObject.id,
             on: {
                   click: handleDeleteButton,
             }
@@ -129,7 +161,7 @@ function renderStudentOnDom(studentObject){
             var studentIndex = student_array.indexOf(studentObject);
             student_array.splice(studentIndex,1);
             $(this).closest('tr').remove();
-
+            deleteStudentFromServer(studentObject.id);
             calculateGradeAverage(student_array);
             
       }
@@ -158,13 +190,12 @@ function updateStudentList(studentArray){
  * @returns {number}
  */
 function calculateGradeAverage(studentArray){
-      debugger;
       console.log('calculateGradeAverage');
       var gradeTotal=null;
       for ( var student = 0; student < studentArray.length; student++ ) {
             gradeTotal+=parseInt(studentArray[student].grade); 
       }
-      renderGradeAverage(gradeTotal/studentArray.length);
+      renderGradeAverage(Math.floor(gradeTotal/studentArray.length));
       
 }
 /***************************************************************************************************
@@ -197,11 +228,93 @@ function handleGetData() {
             method: 'post',
             data: {
                   api_key: 'in0MdAd42k',
+                  // 'force-failure': 'server'
             }
 
       };
 
       $.ajax(ajaxOptions).then(function(response){
-            console.log(response);
+            console.log('get data working', response.data);
+            student_array = response.data;
+            updateStudentList(student_array);
+      }).fail(function(errorResponse) {
+            console.log('errorResponse', errorResponse);
+            if (errorResponse.status === 500) {
+                  $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
+            }
+            
+            $('#myModal').modal('show');
       });
+      console.log('done getting data');
+}
+
+function addStudentToServer(name, course, grade) {
+      var ajaxOptions = {
+            url: 'http://s-apis.learningfuze.com/sgt/create',
+            method: 'post',
+            dataType: 'json',
+            data : {
+                  api_key: 'in0MdAd42k',
+                  name: name,
+                  course: course,
+                  grade: grade,
+                  'force-failure': 'server'
+            },
+            success: function(response){
+                  console.log('response error',response.errors)
+                  if (response.success === true && response.errors !== undefined) {
+                        $('#errorText').text('There can only be one!');
+                        $('#myModal').modal('show');
+                  }
+
+                  console.log('addStudentToServer', response);
+
+            },
+            error: function(errorResponse) {
+                  if (errorResponse.status === 500) {
+                        $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
+                  } 
+                  
+                  $('#myModal').modal('show');
+            },
+            
+      }
+
+      $.ajax(ajaxOptions);
+}
+
+function deleteStudentFromServer(studentId) {
+      console.log(studentId);
+      var ajaxOptions = {
+            url: 'http://s-apis.learningfuze.com/sgt/delete',
+            method: 'post',
+            dataType: 'json',
+            data : {
+                  api_key: 'in0MdAd42k',
+                  student_id: studentId,
+                  // 'force-failure': 'server'
+            },
+            
+            success: function(response){
+                  if (response.success === true) {
+                        console.log('yaay');
+                  } else if (response.success === false & response.errors !== undefined){
+                        $('#errorText').text('Unable to perform action. Please check your permissions and try again.');
+                        $('#myModal').modal('show');
+                  }
+                  console.log('deleteFromServer', response);
+
+            },
+
+            error: function(errorResponse) {
+                  if (errorResponse.status === 500) {
+                        $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
+                  } 
+                  
+                  $('#myModal').modal('show');
+            },
+            
+      }
+
+      $.ajax(ajaxOptions);
 }

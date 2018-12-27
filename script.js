@@ -258,7 +258,7 @@ function addStudentToServer(name, course, grade) {
                   name: name,
                   course: course,
                   grade: grade,
-                  'force-failure': 'server'
+                  // 'force-failure': 'server'
             },
             success: function(response){
                   console.log('response error',response.errors)

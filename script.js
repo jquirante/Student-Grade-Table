@@ -99,7 +99,7 @@ function clearAddStudentFormInputs(){
  * @param {object} studentObj a single student object with course, name, and grade inside
  */
 function renderStudentOnDom(studentObject){
-      debugger;
+      
       var tableRow = $('<tr>', {
             // display: 'inline-block',
             class: 'col-xs-12',
@@ -179,7 +179,7 @@ function renderStudentOnDom(studentObject){
       }
 
       function handleStudentUpdate() {
-            debugger;
+            
             console.log('Update Student!');
             var saveButton = $('<button>', {
                   class: 'btn btn-danger',
@@ -274,7 +274,7 @@ function renderGradeAverage(numberAverage){
 
 
 function handleGetData() {
-      debugger;
+      
       console.log('get data');
       var ajaxOptions = {
             dataType: 'json',
@@ -300,7 +300,7 @@ function handleGetData() {
 }
 
 function addStudentToServer(name, course, grade) {
-      debugger;
+      
       var ajaxOptions = {
             url: 'http://localhost:8888/addStudentGrades.php',
             method: 'post',
@@ -313,9 +313,9 @@ function addStudentToServer(name, course, grade) {
             },
             success: function(response){
                   console.log('response error',response.errors)
-                  debugger;
+                  
                   if (response.success === true && response.errors !== undefined) {
-                        debugger;
+                        
                         $('#errorText').text('There can only be one!');
                         $('#myModal').modal('show');
                   }
@@ -379,7 +379,7 @@ function saveUpdateToDb(studentInfo) {
             dataType: 'json',
             data: studentInfo,
             success: function(response) {
-                  debugger;
+                  
                   console.log('yay');
                   handleGetData();
             },

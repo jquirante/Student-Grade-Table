@@ -1,0 +1,3 @@
+<?php
+$creds = mysqli_connect('host','user','password','dbname', 'port');
+?>

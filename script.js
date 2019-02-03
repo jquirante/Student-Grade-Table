@@ -99,7 +99,7 @@ function clearAddStudentFormInputs(){
  * @param {object} studentObj a single student object with course, name, and grade inside
  */
 function renderStudentOnDom(studentObject){
-      
+      debugger;
       var tableRow = $('<tr>', {
             // display: 'inline-block',
             class: 'col-xs-12',
@@ -147,13 +147,25 @@ function renderStudentOnDom(studentObject){
             class: 'btn btn-danger',
             // 'text-align': 'center',
             text: 'Delete',
-            'data-student': studentObject.id,
+            'data-student': studentObject.ID,
             on: {
                   click: handleDeleteButton,
             }
       });
 
-      deleteContainer.append(deleteButton);
+      var editButton = $('<button>', {
+            class: 'btn btn-danger',
+            // 'text-align': 'center',
+            text: 'Edit',
+            'data-student': studentObject.ID,
+            on: {
+                  click: handleStudentUpdate,
+            }
+      });
+     
+
+      console.log('STUDENT ID: ', studentObject.ID);
+      deleteContainer.append( deleteButton, editButton);
       tableRow.append(deleteContainer);
       $('.student-list tbody').append(tableRow);
 
@@ -161,11 +173,52 @@ function renderStudentOnDom(studentObject){
             var studentIndex = student_array.indexOf(studentObject);
             student_array.splice(studentIndex,1);
             $(this).closest('tr').remove();
-            deleteStudentFromServer(studentObject.id);
+            deleteStudentFromServer(studentObject.ID);
             calculateGradeAverage(student_array);
             
       }
+
+      function handleStudentUpdate() {
+            debugger;
+            console.log('Update Student!');
+            var saveButton = $('<button>', {
+                  class: 'btn btn-danger',
+                  text: 'Save',
+                  'data-student': studentObject.ID,
+                  on: {
+                        click: handleSaveUpdate,
+                  }
+            });
+
+            deleteContainer.append(saveButton);
+
+            var parentRow = $(this).parent().parent(); //tr
+            var name = parentRow.children("td:nth-child(2)");
+            var course = parentRow.children("td:nth-child(3)");
+            var grade = parentRow.children("td:nth-child(4)").first();
+            // var tdButtons = parentRow.children("td:nth-child(4)");
+ 
+            name.html("<input class='form-control form-rounded' type='text' id='updateName' value='"+name.html()+"'/>");
+            course.html("<input class='form-control form-rounded' type='text' id='updateCourse' value='"+course.html()+"'/>");
+            grade.html("<input class='form-control form-rounded' type='text' id='updateGrade' value='"+grade.text()+"'/>");
+ 
+            // $(".btnSave").bind("click", Save);
+            // $(".btnEdit").bind("click", Edit);
+            // $(".btnDelete").bind("click", Delete);
+      }
       
+      function handleSaveUpdate() {
+            console.log('Save Update');
+            console.log('name: ', name);
+            var updatedStudentInfo = {
+                  id: studentObject.ID,
+                  name: $('#updateName').val(),
+                  course: $('#updateCourse').val(),
+                  grade: $('#updateGrade').val()
+            }
+
+            saveUpdateToDb(updatedStudentInfo);
+      }
       
 }
 
@@ -221,15 +274,13 @@ function renderGradeAverage(numberAverage){
 
 
 function handleGetData() {
+      debugger;
       console.log('get data');
       var ajaxOptions = {
             dataType: 'json',
-            url: 'http://s-apis.learningfuze.com/sgt/get',
+            url: 'http://localhost:8888/getStudentGrades.php',
             method: 'post',
-            data: {
-                  api_key: 'in0MdAd42k',
-                  // 'force-failure': 'server'
-            }
+            
 
       };
 
@@ -249,20 +300,22 @@ function handleGetData() {
 }
 
 function addStudentToServer(name, course, grade) {
+      debugger;
       var ajaxOptions = {
-            url: 'http://s-apis.learningfuze.com/sgt/create',
+            url: 'http://localhost:8888/addStudentGrades.php',
             method: 'post',
             dataType: 'json',
             data : {
-                  api_key: 'in0MdAd42k',
                   name: name,
                   course: course,
                   grade: grade,
-                  'force-failure': 'server'
+                  // 'force-failure': 'server'
             },
             success: function(response){
                   console.log('response error',response.errors)
+                  debugger;
                   if (response.success === true && response.errors !== undefined) {
+                        debugger;
                         $('#errorText').text('There can only be one!');
                         $('#myModal').modal('show');
                   }
@@ -284,13 +337,13 @@ function addStudentToServer(name, course, grade) {
 }
 
 function deleteStudentFromServer(studentId) {
+
       console.log(studentId);
       var ajaxOptions = {
-            url: 'http://s-apis.learningfuze.com/sgt/delete',
+            url: 'http://localhost:8888/deleteStudentGrades.php',
             method: 'post',
             dataType: 'json',
             data : {
-                  api_key: 'in0MdAd42k',
                   student_id: studentId,
                   // 'force-failure': 'server'
             },
@@ -314,6 +367,25 @@ function deleteStudentFromServer(studentId) {
                   $('#myModal').modal('show');
             },
             
+      }
+
+      $.ajax(ajaxOptions);
+}
+
+function saveUpdateToDb(studentInfo) {
+      var ajaxOptions = {
+            url: 'http://localhost:8888/updateStudentGrades.php',
+            method: 'post',
+            dataType: 'json',
+            data: studentInfo,
+            success: function(response) {
+                  debugger;
+                  console.log('yay');
+                  handleGetData();
+            },
+            error: function(error) {
+                  console.log('damn error', error);
+            },
       }
 
       $.ajax(ajaxOptions);

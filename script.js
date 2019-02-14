@@ -31,6 +31,7 @@ function initializeApp(){
       console.log('init');
       addClickHandlersToElements();
       handleGetData();
+      // refreshData();
 }
 
 /***************************************************************************************************
@@ -54,7 +55,13 @@ function addClickHandlersToElements(){
  */
 function handleAddClicked(){
       console.log('handle add click');
-      addStudent();
+      let inputValidationStatus = validateInputs();
+
+      if (inputValidationStatus === true) {
+         clearErrorFields();
+         addStudent();
+      }
+     
 }
 /***************************************************************************************************
  * handleCancelClicked - Event Handler when user clicks the cancel button, should clear out student form
@@ -102,21 +109,40 @@ function renderStudentOnDom(studentObject){
       
       var tableRow = $('<tr>', {
             // display: 'inline-block',
+            css: { 
+                  display: 'table',
+            },
+            scope: 'row',
             class: 'col-xs-12',
       });
 
-      var divider = $('<hr />');
+      // var divider = $('<hr />', {
+      //       css: {
+      //             margin: '10px',
+      //       }
+      // }
+      // );
 
-      tableRow.append(divider);
+      // tableRow.append(divider);
       // console.log('datastudent', tableRow[0]);
 
       var tableName = $('<td>', {
+            css: { 
+                  display: 'inline-block',
+                  position: 'relative',
+                  'padding-top' : '8px',
+                  'padding-left': '15px',
+            },
             class: 'col-xs-3',
             text: studentObject.name,
       });
 
       var tableCourse = $('<td>', {
-            class: 'col-xs-6',
+            css: { 
+                  display: 'inline-block',
+                  position: 'relative',
+            },
+            class: 'col-xs-3',
             text: studentObject.course,
       });
 
@@ -124,14 +150,19 @@ function renderStudentOnDom(studentObject){
             css: { 
                   display: 'inline-block',
                   position: 'relative',
-                  'text-align': 'center',
-                  width: '60%',
+                  
             },
+            class: 'col-xs-2',
             text: studentObject.grade,
       });
 
       var tableGrade = $('<td>', {
-            class: 'col-xs-3',
+            css: { 
+                  display: 'inline-block',
+                  position: 'relative',
+            },
+            class: 'col-xs-2',
+            
             
       });
 
@@ -140,21 +171,33 @@ function renderStudentOnDom(studentObject){
       tableRow.append(tableName, tableCourse, tableGrade);
       
       var deleteContainer = $('<td>', {
-            class: 'col-xs-3', 
+            css: { 
+                  display: 'inline-block',
+                  position: 'relative',
+                  
+            },
+            class: 'col-xs-4',
+            id: 'deleteContainer',
       });
       
       var deleteButton = $('<button>', {
+            css: { 
+                  display: 'inline-block',
+                  position: 'relative',
+                  'margin-right': '5px'
+                  
+            },
             class: 'btn btn-danger',
             // 'text-align': 'center',
             text: 'Delete',
             'data-student': studentObject.ID,
             on: {
-                  click: handleDeleteButton,
+                  click: showDeleteModal,
             }
       });
 
       var editButton = $('<button>', {
-            class: 'btn btn-danger',
+            class: 'btn btn-info',
             // 'text-align': 'center',
             text: 'Edit',
             'data-student': studentObject.ID,
@@ -169,47 +212,193 @@ function renderStudentOnDom(studentObject){
       tableRow.append(deleteContainer);
       $('.student-list tbody').append(tableRow);
 
-      function handleDeleteButton() {
-            var studentIndex = student_array.indexOf(studentObject);
-            student_array.splice(studentIndex,1);
-            $(this).closest('tr').remove();
-            deleteStudentFromServer(studentObject.ID);
-            calculateGradeAverage(student_array);
+      function showDeleteModal() {
+            // var studentIndex = student_array.indexOf(studentObject);
+            // student_array.splice(studentIndex,1);
+            // $(this).closest('tr').remove();
+            // deleteStudentFromServer(studentObject.ID);
+            // calculateGradeAverage(student_array);
+            var parentRow = $(this).parent().parent(); //tr
+            var name = parentRow.children("td:nth-child(1)");
+            var course = parentRow.children("td:nth-child(2)");
+            var grade = parentRow.children("td:nth-child(3)").first();
+
+            $('.modal-title').text('Delete Student Details');
+            $('.modal-body').html(`
+            <form class="form-group student-update-form col-sm-8 col-sm-offset-2">
+                  <h5>Student Name</h5>
+                  <div class="form-group input-group">
+                  <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                  </span>
+                  <input pattern="^[a-zA-Z ]{3,}$" type="text" class="updateInput form-control form-rounded" name="updateName" id="updateName" disabled="true" value="${name.html()}">
+                  </div>
+                  <div id="updateNameErrorContainer" class="text-danger"></div>
+                  <h5>Student Course</h5>
+                  <div class="form-group input-group">
+                  <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                  </span>
+                  <input pattern="^[a-zA-Z ]{3,}$" type="text" class="updateInput form-control form-rounded" name="updateCourse" id="updateCourse"
+                  disabled="true" value="${course.html()}">
+                  </div>
+                  <div id="updateCourseErrorContainer" class="text-danger"></div>
+                  <h5>Student Grade</h5>
+                  <div class="form-group input-group">
+                  <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-education"></span>
+                  </span>
+                  <input pattern="^[1-9][0-9]?$|^100$" type="text" class="updateInput form-control form-rounded" name="updateGrade" id="updateGrade"
+                  disabled="true" value="${grade.text()}">
+                  </div>
+                  <div id="updateGradeErrorContainer" class="text-danger"></div>
+            </form>`
+
+            );
+            $('#myModal').modal('show');
+            console.log('Update Student!');
+            var footerContainer = $('<div>',{
+                  class: 'text-center'
+            });
+
+            var deleteMessage = $('<div>', {
+                  css: {
+                        left: '-5px',
+                        position: 'relative',
+                        'margin-bottom': '15px'
+                        
+                  },
+                  text: 'Are you sure you want to delete this entry?',
+                  class: 'text-center'
+            })
+
+            var confirmButton = $('<button>', {
+                  class: 'btn btn-success text-center',
+                  text: 'Confirm',
+                  'data-student': studentObject.ID,
+                  on: {
+                        click: () => handleDeleteConfirmation(parentRow),
+                  }
+            });
+
+            var cancelButton = $('<button>', {
+                  class: 'btn btn-default text-center',
+                  text: 'Cancel',
+                  on: {
+                        click: clearModalContents,
+                  }
+            });
+            
+            footerContainer.append(deleteMessage,confirmButton, cancelButton);
+            $('.modal-footer').append(footerContainer);
             
       }
 
-      function handleStudentUpdate() {
+      function handleDeleteConfirmation(row) {
+            debugger;
             
+            var studentIndex = student_array.indexOf(studentObject);
+            student_array.splice(studentIndex,1);
+            row.remove();
+            // $(this).closest('tr').remove();
+            deleteStudentFromServer(studentObject.ID);
+            calculateGradeAverage(student_array);
+            clearModalContents();
+      }
+      function handleStudentUpdate() {
+
+            var parentRow = $(this).parent().parent(); //tr
+            var name = parentRow.children("td:nth-child(1)");
+            var course = parentRow.children("td:nth-child(2)");
+            var grade = parentRow.children("td:nth-child(3)").first();
+
+            $('.modal-title').text('Update Student Details');
+            $('.modal-body').html(`
+            <form class="form-group student-update-form col-sm-8 col-sm-offset-2">
+                  <h5>Student Name</h3>
+                  <div class="form-group input-group">
+                  <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                  </span>
+                  <input pattern="^[a-zA-Z ]{3,}$" type="text" class="updateInput form-control form-rounded" name="updateName" id="updateName" value="${name.html()}">
+                  </div>
+                  <div id="updateNameErrorContainer" class="text-danger"></div>
+                  <h5>Student Course</h3>
+                  <div class="form-group input-group">
+                  <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                  </span>
+                  <input pattern="^[a-zA-Z ]{3,}$" type="text" class="updateInput form-control form-rounded" name="updateCourse" id="updateCourse"
+                        value="${course.html()}">
+                  </div>
+                  <div id="updateCourseErrorContainer" class="text-danger"></div>
+                  <h5>Student Grade</h3>
+                  <div class="form-group input-group">
+                  <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-education"></span>
+                  </span>
+                  <input pattern="^[1-9][0-9]?$|^100$" type="text" class="updateInput form-control form-rounded" name="updateGrade" id="updateGrade"
+                        value="${grade.text()}">
+                  </div>
+                  <div id="updateGradeErrorContainer" class="text-danger"></div>
+            </form>`
+            );
+            $('#myModal').modal('show');
             console.log('Update Student!');
-            var saveButton = $('<button>', {
-                  class: 'btn btn-danger',
-                  text: 'Save',
+
+            var footerContainer = $('<div>',{
+                  class: 'text-center'
+            });
+
+            var updateMessage = $('<div>', {
+                  css: {
+                        'margin-bottom': '15px',
+                        position: 'relative',
+                  },
+                  text: 'Confirm these changes?'
+            });
+
+            var submitButton = $('<button>', {
+                  class: 'btn btn-success',
+                  text: 'Submit',
                   'data-student': studentObject.ID,
                   on: {
                         click: handleSaveUpdate,
                   }
             });
 
-            deleteContainer.append(saveButton);
+            var cancelButton = $('<button>', {
+                  class: 'btn btn-default',
+                  'data-dismiss': "modal",
+                  text: 'Cancel',
+                  on: {
+                        click: clearModalContents,
+                  }
+            });
 
-            var parentRow = $(this).parent().parent(); //tr
-            var name = parentRow.children("td:nth-child(2)");
-            var course = parentRow.children("td:nth-child(3)");
-            var grade = parentRow.children("td:nth-child(4)").first();
+            footerContainer.append(updateMessage,submitButton,cancelButton);
+            $('.modal-footer').append(footerContainer);
+
+            // var parentRow = $(this).parent().parent(); //tr
+            // var name = parentRow.children("td:nth-child(2)");
+            // var course = parentRow.children("td:nth-child(3)");
+            // var grade = parentRow.children("td:nth-child(4)").first();
             // var tdButtons = parentRow.children("td:nth-child(4)");
  
-            name.html("<input class='form-control form-rounded' type='text' id='updateName' value='"+name.html()+"'/>");
-            course.html("<input class='form-control form-rounded' type='text' id='updateCourse' value='"+course.html()+"'/>");
-            grade.html("<input class='form-control form-rounded' type='text' id='updateGrade' value='"+grade.text()+"'/>");
+            // name.html("<input pattern='^[a-zA-Z ]{3,}$' class='updateInput form-control form-rounded' type='text' name='updateName' id='updateName' value=' "+name.html()+" '/><div id='updateNameErrorContainer' class='text-danger'></div>");
+            // course.html("<input pattern='^[a-zA-Z ]{3,}$' class='updateInput form-control form-rounded' type='text' name='updateCourse' id='updateCourse' value='"+course.html()+"'/><div id='updateCourseErrorContainer' class='text-danger'></div>");
+            // grade.html("<input pattern='^[1-9][0-9]?$|^100$' class='updateInput form-control form-rounded' type='text' name='updateGrade' id='updateGrade' value='"+grade.text()+"'/><div id='updateGradeErrorContainer' class='text-danger'></div>");
  
             // $(".btnSave").bind("click", Save);
             // $(".btnEdit").bind("click", Edit);
             // $(".btnDelete").bind("click", Delete);
       }
       
-      function handleSaveUpdate() {
+      function handleSaveUpdate(event) {
             console.log('Save Update');
             console.log('name: ', name);
+            debugger;
+            event.preventDefault();
             var updatedStudentInfo = {
                   id: studentObject.ID,
                   name: $('#updateName').val(),
@@ -217,7 +406,15 @@ function renderStudentOnDom(studentObject){
                   grade: $('#updateGrade').val()
             }
 
-            saveUpdateToDb(updatedStudentInfo);
+            let updateInputValidation = validateUpdateInputs();
+
+            if(updateInputValidation === true) {
+                  clearModalContents();
+                  saveUpdateToDb(updatedStudentInfo);
+            } else {
+                  return;
+            }
+           
       }
       
 }
@@ -274,7 +471,7 @@ function renderGradeAverage(numberAverage){
 
 
 function handleGetData() {
-      
+      debugger;
       console.log('get data');
       var ajaxOptions = {
             dataType: 'json',
@@ -285,10 +482,12 @@ function handleGetData() {
       };
 
       $.ajax(ajaxOptions).then(function(response){
+            debugger;
             console.log('get data working', response.data);
             student_array = response.data;
             updateStudentList(student_array);
       }).fail(function(errorResponse) {
+            debugger;
             console.log('errorResponse', errorResponse);
             if (errorResponse.status === 500) {
                   $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
@@ -313,6 +512,12 @@ function addStudentToServer(name, course, grade) {
             },
             success: function(response){
                   console.log('response error',response.errors)
+                  
+                  // if (response.nameError || response.courseError || response.gradeError) {
+                  //       $("#nameErrorContainer").text(response.nameError);
+                  //       $("#courseErrorContainer").text(response.courseError);
+                  //       $("#gradeErrorContainer").text(response.gradeError);
+                  // } 
                   
                   if (response.success === true && response.errors !== undefined) {
                         
@@ -379,8 +584,28 @@ function saveUpdateToDb(studentInfo) {
             dataType: 'json',
             data: studentInfo,
             success: function(response) {
-                  
+                  console.log('Update response: ',response)
                   console.log('yay');
+                  debugger;
+                  if (response.nameError) {
+                        console.log($('#errorText').text());
+                        $('#errorText').append(`<p>${response.nameError}</p>`);
+                  }
+
+                  if (response.courseError) {
+                        $('#errorText').append(`<p>${response.courseError}</p>`);
+                  }
+
+                  if (response.gradeError) {
+                        $('#errorText').append(`<p>${response.gradeError}</p>`);
+                  }
+                  
+                  if (response.nameError || response.courseError || response.gradeError) {
+                        $('#myModal').modal('show');
+                  }
+
+                  clearErrorFields();
+                  $('#myModal').modal('hide');
                   handleGetData();
             },
             error: function(error) {
@@ -389,4 +614,111 @@ function saveUpdateToDb(studentInfo) {
       }
 
       $.ajax(ajaxOptions);
+}
+
+function validateInputs(){
+      debugger;
+      console.log("VALIDATE INPUTS");
+      let validatedStatus = true;
+      
+      const inputs = document.getElementsByClassName('addInput');
+      console.log(inputs);
+
+      for ( var inputField = 0; inputField < inputs.length; inputField++ ) {
+            const pattern = new RegExp(inputs[inputField].pattern);
+            console.log(pattern);
+            const value = inputs[inputField].value;
+            console.log(value);
+            console.log(pattern.test(value));
+
+            if (pattern.test(value) === false) {
+                  validatedStatus = false;
+                  if(inputs[inputField].pattern === '^[a-zA-Z ]{3,}$') {
+                        let nameCourseErrorMessage = '';
+                        nameCourseErrorMessage = "Please enter at least three letters";
+                        $(`#${inputs[inputField].name}ErrorContainer`).text(nameCourseErrorMessage);
+                  } else {
+                        let gradeMessage = '';
+                        gradeMessage = "Please enter a number between 0 and 100";
+                        $(`#${inputs[inputField].name}ErrorContainer`).text(gradeMessage);
+                  }
+            }
+      }
+
+      return validatedStatus;
+}
+
+function validateUpdateInputs(){
+      debugger;
+      console.log("VALIDATE INPUTS");
+      let validatedStatus = true;
+      
+      const inputs = document.getElementsByClassName('updateInput');
+      console.log(inputs);
+
+      for ( var inputField = 0; inputField < inputs.length; inputField++ ) {
+            const pattern = new RegExp(inputs[inputField].pattern);
+            console.log(pattern);
+            const value = inputs[inputField].value;
+            console.log(value);
+            console.log(pattern.test(value));
+
+            if (pattern.test(value) === false) {
+                  validatedStatus = false;
+                  if(inputs[inputField].pattern === '^[a-zA-Z ]{3,}$') {
+                        let nameCourseErrorMessage = '';
+                        nameCourseErrorMessage = "Please enter at least three letters";
+                        $(`#${inputs[inputField].name}ErrorContainer`).text(nameCourseErrorMessage);
+                  } else {
+                        let gradeMessage = '';
+                        gradeMessage = "Please enter a number between 0 and 100";
+                        $(`#${inputs[inputField].name}ErrorContainer`).text(gradeMessage);
+                  }
+            }
+      }
+
+      return validatedStatus;
+}
+
+function clearErrorFields() {
+      const inputs = document.getElementsByTagName('input');
+
+      for ( var inputField = 0; inputField < inputs.length; inputField++ ) {
+      
+         $(`#${inputs[inputField].name}ErrorContainer`).text('');
+                    
+      }
+}
+
+function refreshData() {
+      debugger;
+      console.log('refresh data');
+      var ajaxOptions = {
+            dataType: 'json',
+            url: 'http://localhost:8888/refreshStudentGrades.php',
+            method: 'post',
+            
+
+      };
+
+      $.ajax(ajaxOptions).then(function(response){
+            debugger;
+            console.log('get data working', response.data);
+      }).fail(function(errorResponse) {
+            debugger;
+            console.log('errorResponse', errorResponse);
+            if (errorResponse.status === 500) {
+                  $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
+            }
+            
+            $('#myModal').modal('show');
+      });
+      console.log('done getting data');
+}
+
+function clearModalContents() {
+      $('.modal-title').empty();
+      $('.modal-body').empty();
+      $('.modal-footer').empty();
+      $('#myModal').modal('hide');
 }

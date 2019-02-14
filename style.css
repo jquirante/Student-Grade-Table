@@ -3,6 +3,13 @@
 }
 
 @media only screen and (max-width: 600px) {
+    table {
+        font-size: 10px;
+    }
+
+    table .btn {
+        font-size: 10px;
+    }
     #tableContainer {
         padding: 0;
     }
@@ -24,6 +31,10 @@
 } 
 
 @media only screen and (min-width: 768px) {
+    table .btn {
+        font-size: 10px;
+    }
+
     #courseTableHeader {
         position: relative;
         padding-left: 20px;
@@ -33,3 +44,21 @@
         right: -150px;
     }
 } 
+
+@media only screen and (min-width: 992px) {
+    table .btn {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #operationsTableHeader {
+        position: relative;
+        padding-left: 30px;
+    }
+
+    #gradeTableHeader {
+        position: relative;
+        padding-left: 15px;
+    }
+}

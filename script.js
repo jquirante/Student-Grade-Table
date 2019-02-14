@@ -295,7 +295,6 @@ function renderStudentOnDom(studentObject){
       }
 
       function handleDeleteConfirmation(row) {
-            debugger;
             
             var studentIndex = student_array.indexOf(studentObject);
             student_array.splice(studentIndex,1);
@@ -397,7 +396,6 @@ function renderStudentOnDom(studentObject){
       function handleSaveUpdate(event) {
             console.log('Save Update');
             console.log('name: ', name);
-            debugger;
             event.preventDefault();
             var updatedStudentInfo = {
                   id: studentObject.ID,
@@ -471,7 +469,7 @@ function renderGradeAverage(numberAverage){
 
 
 function handleGetData() {
-      debugger;
+
       console.log('get data');
       var ajaxOptions = {
             dataType: 'json',
@@ -482,12 +480,12 @@ function handleGetData() {
       };
 
       $.ajax(ajaxOptions).then(function(response){
-            debugger;
+            
             console.log('get data working', response.data);
             student_array = response.data;
             updateStudentList(student_array);
       }).fail(function(errorResponse) {
-            debugger;
+            
             console.log('errorResponse', errorResponse);
             if (errorResponse.status === 500) {
                   $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
@@ -586,7 +584,7 @@ function saveUpdateToDb(studentInfo) {
             success: function(response) {
                   console.log('Update response: ',response)
                   console.log('yay');
-                  debugger;
+                  
                   if (response.nameError) {
                         console.log($('#errorText').text());
                         $('#errorText').append(`<p>${response.nameError}</p>`);
@@ -617,7 +615,7 @@ function saveUpdateToDb(studentInfo) {
 }
 
 function validateInputs(){
-      debugger;
+     
       console.log("VALIDATE INPUTS");
       let validatedStatus = true;
       
@@ -649,7 +647,7 @@ function validateInputs(){
 }
 
 function validateUpdateInputs(){
-      debugger;
+      
       console.log("VALIDATE INPUTS");
       let validatedStatus = true;
       
@@ -691,7 +689,7 @@ function clearErrorFields() {
 }
 
 function refreshData() {
-      debugger;
+     
       console.log('refresh data');
       var ajaxOptions = {
             dataType: 'json',
@@ -702,10 +700,10 @@ function refreshData() {
       };
 
       $.ajax(ajaxOptions).then(function(response){
-            debugger;
+            
             console.log('get data working', response.data);
       }).fail(function(errorResponse) {
-            debugger;
+            
             console.log('errorResponse', errorResponse);
             if (errorResponse.status === 500) {
                   $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');

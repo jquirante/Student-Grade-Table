@@ -2,6 +2,10 @@
     margin-bottom: 30px;
 }
 
+.errorText {
+    text-align: center;
+}
+
 @media only screen and (max-width: 600px) {
     table {
         font-size: 10px;

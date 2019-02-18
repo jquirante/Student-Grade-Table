@@ -8,9 +8,9 @@
         'success' => false
     ];
 
-    $query = "SELECT * from `studentGradeTable`";
-
-    $result = mysqli_query($creds, $query);
+    $stmt = $creds->prepare("SELECT * from `studentGradeTable`");
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     $data = [];
 

@@ -70,9 +70,10 @@ if ($nameError === '' and $courseError === '' and $gradeError === '') {
     if ($result) {
         $output["success"] = true;
     } else {
+        $output["success"] = true;
         $output["error"] = 'Query Failed';
     }
-}
+} 
 
 
 $json_output = json_encode($output);

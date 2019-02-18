@@ -28,10 +28,10 @@ var student_array;
 * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
 */
 function initializeApp(){
-      console.log('init');
+      
       addClickHandlersToElements();
       handleGetData();
-      // refreshData();
+      refreshData();
 }
 
 /***************************************************************************************************
@@ -41,10 +41,15 @@ function initializeApp(){
 *     
 */
 function addClickHandlersToElements(){
-      console.log('add click handlers');
+      
       $('.btn-success').on('click', handleAddClicked);
       $('.btn-default').on('click', handleCancelClick);
       $('.btn-info').on('click', handleGetData);
+
+      $('#myModal').on('hidden.bs.modal', function () { 
+            
+            clearModalContents();
+        });  
 }
 
 /***************************************************************************************************
@@ -54,7 +59,8 @@ function addClickHandlersToElements(){
        none
  */
 function handleAddClicked(){
-      console.log('handle add click');
+      
+      addStudentclearErrorMessaging();
       let inputValidationStatus = validateInputs();
 
       if (inputValidationStatus === true) {
@@ -70,8 +76,9 @@ function handleAddClicked(){
  * @calls: clearAddStudentFormInputs
  */
 function handleCancelClick(){
-      console.log('handle cancel click');
+      
       clearAddStudentFormInputs();
+      addStudentclearErrorMessaging();
 }
 /***************************************************************************************************
  * addStudent - creates a student objects based on input fields in the form and adds the object to global student array
@@ -80,7 +87,7 @@ function handleCancelClick(){
  * @calls clearAddStudentFormInputs, updateStudentList
  */
 function addStudent(){
-      console.log('add student');
+      
       var newStudent = {};
       newStudent.name = $('#studentName').val();
       newStudent.course = $('#course').val();
@@ -96,7 +103,7 @@ function addStudent(){
  * clearAddStudentForm - clears out the form values based on inputIds variable
  */
 function clearAddStudentFormInputs(){
-      console.log('clear add student');
+      
       $('input').val('');
 
 }
@@ -115,16 +122,6 @@ function renderStudentOnDom(studentObject){
             scope: 'row',
             class: 'col-xs-12',
       });
-
-      // var divider = $('<hr />', {
-      //       css: {
-      //             margin: '10px',
-      //       }
-      // }
-      // );
-
-      // tableRow.append(divider);
-      // console.log('datastudent', tableRow[0]);
 
       var tableName = $('<td>', {
             css: { 
@@ -206,13 +203,12 @@ function renderStudentOnDom(studentObject){
             }
       });
      
-
-      console.log('STUDENT ID: ', studentObject.ID);
       deleteContainer.append( deleteButton, editButton);
       tableRow.append(deleteContainer);
       $('.student-list tbody').append(tableRow);
 
       function showDeleteModal() {
+            
             // var studentIndex = student_array.indexOf(studentObject);
             // student_array.splice(studentIndex,1);
             // $(this).closest('tr').remove();
@@ -256,7 +252,7 @@ function renderStudentOnDom(studentObject){
 
             );
             $('#myModal').modal('show');
-            console.log('Update Student!');
+            
             var footerContainer = $('<div>',{
                   class: 'text-center'
             });
@@ -277,7 +273,7 @@ function renderStudentOnDom(studentObject){
                   text: 'Confirm',
                   'data-student': studentObject.ID,
                   on: {
-                        click: () => handleDeleteConfirmation(parentRow),
+                        click: () => handleDeleteConfirmation(studentObject.ID, parentRow),
                   }
             });
 
@@ -285,7 +281,7 @@ function renderStudentOnDom(studentObject){
                   class: 'btn btn-default text-center',
                   text: 'Cancel',
                   on: {
-                        click: clearModalContents,
+                        click: cancelModalAction,
                   }
             });
             
@@ -294,15 +290,16 @@ function renderStudentOnDom(studentObject){
             
       }
 
-      function handleDeleteConfirmation(row) {
-            
+      function handleDeleteConfirmation(studentID, row) {
+
             var studentIndex = student_array.indexOf(studentObject);
             student_array.splice(studentIndex,1);
             row.remove();
-            // $(this).closest('tr').remove();
-            deleteStudentFromServer(studentObject.ID);
+            
+            deleteStudentFromServer(studentID);
             calculateGradeAverage(student_array);
-            clearModalContents();
+
+            
       }
       function handleStudentUpdate() {
 
@@ -343,7 +340,6 @@ function renderStudentOnDom(studentObject){
             </form>`
             );
             $('#myModal').modal('show');
-            console.log('Update Student!');
 
             var footerContainer = $('<div>',{
                   class: 'text-center'
@@ -371,7 +367,7 @@ function renderStudentOnDom(studentObject){
                   'data-dismiss': "modal",
                   text: 'Cancel',
                   on: {
-                        click: clearModalContents,
+                        click: cancelModalAction,
                   }
             });
 
@@ -394,8 +390,7 @@ function renderStudentOnDom(studentObject){
       }
       
       function handleSaveUpdate(event) {
-            console.log('Save Update');
-            console.log('name: ', name);
+            
             event.preventDefault();
             var updatedStudentInfo = {
                   id: studentObject.ID,
@@ -404,6 +399,7 @@ function renderStudentOnDom(studentObject){
                   grade: $('#updateGrade').val()
             }
 
+            clearModalErrorMessaging();
             let updateInputValidation = validateUpdateInputs();
 
             if(updateInputValidation === true) {
@@ -425,7 +421,7 @@ function renderStudentOnDom(studentObject){
  */
 function updateStudentList(studentArray){
       $('.student-list tbody tr').remove();
-      console.log('updateStudentList');
+
       for ( var student = 0; student < studentArray.length; student++ ) {
             renderStudentOnDom(studentArray[student]); 
       }
@@ -438,7 +434,7 @@ function updateStudentList(studentArray){
  * @returns {number}
  */
 function calculateGradeAverage(studentArray){
-      console.log('calculateGradeAverage');
+      
       var gradeTotal=null;
       for ( var student = 0; student < studentArray.length; student++ ) {
             gradeTotal+=parseInt(studentArray[student].grade); 
@@ -459,8 +455,6 @@ function renderGradeAverage(numberAverage){
             $('.avgGrade').text(0);
       }
 
-      
-      console.log('renderGradeAvg');
 }
 
 
@@ -470,7 +464,6 @@ function renderGradeAverage(numberAverage){
 
 function handleGetData() {
 
-      console.log('get data');
       var ajaxOptions = {
             dataType: 'json',
             url: 'http://localhost:8888/getStudentGrades.php',
@@ -481,19 +474,17 @@ function handleGetData() {
 
       $.ajax(ajaxOptions).then(function(response){
             
-            console.log('get data working', response.data);
             student_array = response.data;
             updateStudentList(student_array);
       }).fail(function(errorResponse) {
             
-            console.log('errorResponse', errorResponse);
-            if (errorResponse.status === 500) {
-                  $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
-            }
+
+            $('.modal-title').text('Request Error');
+            $('.modal-body').text('There was an error with your request. Please try again in a few minutes.');
             
             $('#myModal').modal('show');
       });
-      console.log('done getting data');
+      
 }
 
 function addStudentToServer(name, course, grade) {
@@ -509,13 +500,6 @@ function addStudentToServer(name, course, grade) {
                   // 'force-failure': 'server'
             },
             success: function(response){
-                  console.log('response error',response.errors)
-                  
-                  // if (response.nameError || response.courseError || response.gradeError) {
-                  //       $("#nameErrorContainer").text(response.nameError);
-                  //       $("#courseErrorContainer").text(response.courseError);
-                  //       $("#gradeErrorContainer").text(response.gradeError);
-                  // } 
                   
                   if (response.success === true && response.errors !== undefined) {
                         
@@ -523,13 +507,13 @@ function addStudentToServer(name, course, grade) {
                         $('#myModal').modal('show');
                   }
 
-                  console.log('addStudentToServer', response);
+                  handleGetData();
 
             },
             error: function(errorResponse) {
-                  if (errorResponse.status === 500) {
-                        $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
-                  } 
+
+                  $('.modal-title').text('Request Error');
+                  $('.modal-body').text('There was an error with your request. Please try again in a few minutes.');
                   
                   $('#myModal').modal('show');
             },
@@ -541,7 +525,6 @@ function addStudentToServer(name, course, grade) {
 
 function deleteStudentFromServer(studentId) {
 
-      console.log(studentId);
       var ajaxOptions = {
             url: 'http://localhost:8888/deleteStudentGrades.php',
             method: 'post',
@@ -552,20 +535,26 @@ function deleteStudentFromServer(studentId) {
             },
             
             success: function(response){
-                  if (response.success === true) {
-                        console.log('yaay');
-                  } else if (response.success === false & response.errors !== undefined){
-                        $('#errorText').text('Unable to perform action. Please check your permissions and try again.');
+                  clearModalContents();
+                  
+                  if (response.success === true & response.error !== undefined){
+                        
+                        $('.modal-title').text('Request Error');
+                        $('.modal-body').text('There was an error with your request. Please try again in a few minutes.');
                         $('#myModal').modal('show');
-                  }
-                  console.log('deleteFromServer', response);
+                  } else if (response.success === true) {
+                        
+                        $('#myModal').modal('hide');
+                  } 
+               
 
             },
 
             error: function(errorResponse) {
-                  if (errorResponse.status === 500) {
-                        $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
-                  } 
+                  clearModalContents();
+            
+                  $('.modal-title').text('Request Error');
+                  $('.modal-body').text('There was an error with your request. Please try again in a few minutes.');
                   
                   $('#myModal').modal('show');
             },
@@ -582,32 +571,27 @@ function saveUpdateToDb(studentInfo) {
             dataType: 'json',
             data: studentInfo,
             success: function(response) {
-                  console.log('Update response: ',response)
-                  console.log('yay');
                   
-                  if (response.nameError) {
-                        console.log($('#errorText').text());
-                        $('#errorText').append(`<p>${response.nameError}</p>`);
-                  }
-
-                  if (response.courseError) {
-                        $('#errorText').append(`<p>${response.courseError}</p>`);
-                  }
-
-                  if (response.gradeError) {
-                        $('#errorText').append(`<p>${response.gradeError}</p>`);
-                  }
-                  
-                  if (response.nameError || response.courseError || response.gradeError) {
-                        $('#myModal').modal('show');
-                  }
-
                   clearErrorFields();
-                  $('#myModal').modal('hide');
+                  if (response.success === true & response.error !== undefined){
+                        
+                        $('.modal-title').text('Request Error');
+                        $('.modal-body').text('There was an error with your request. Please try again in a few minutes.');
+                        $('#errorText').text('Unable to perform action. Please check your permissions and try again.');
+                        $('#myModal').modal('show');
+                  } else if (response.success === true) {
+                  
+                        $('#myModal').modal('hide');
+                  } 
+                  
                   handleGetData();
             },
             error: function(error) {
-                  console.log('damn error', error);
+            
+                  $('.modal-title').text('Request Error');
+                  $('.modal-body').text('There was an error with your request. Please try again in a few minutes.');
+                  
+                  $('#myModal').modal('show');
             },
       }
 
@@ -616,18 +600,16 @@ function saveUpdateToDb(studentInfo) {
 
 function validateInputs(){
      
-      console.log("VALIDATE INPUTS");
+      
       let validatedStatus = true;
       
       const inputs = document.getElementsByClassName('addInput');
-      console.log(inputs);
+     
 
       for ( var inputField = 0; inputField < inputs.length; inputField++ ) {
             const pattern = new RegExp(inputs[inputField].pattern);
-            console.log(pattern);
+            
             const value = inputs[inputField].value;
-            console.log(value);
-            console.log(pattern.test(value));
 
             if (pattern.test(value) === false) {
                   validatedStatus = false;
@@ -648,18 +630,14 @@ function validateInputs(){
 
 function validateUpdateInputs(){
       
-      console.log("VALIDATE INPUTS");
       let validatedStatus = true;
       
       const inputs = document.getElementsByClassName('updateInput');
-      console.log(inputs);
 
       for ( var inputField = 0; inputField < inputs.length; inputField++ ) {
             const pattern = new RegExp(inputs[inputField].pattern);
-            console.log(pattern);
+           
             const value = inputs[inputField].value;
-            console.log(value);
-            console.log(pattern.test(value));
 
             if (pattern.test(value) === false) {
                   validatedStatus = false;
@@ -689,8 +667,7 @@ function clearErrorFields() {
 }
 
 function refreshData() {
-     
-      console.log('refresh data');
+
       var ajaxOptions = {
             dataType: 'json',
             url: 'http://localhost:8888/refreshStudentGrades.php',
@@ -701,22 +678,42 @@ function refreshData() {
 
       $.ajax(ajaxOptions).then(function(response){
             
-            console.log('get data working', response.data);
-      }).fail(function(errorResponse) {
             
-            console.log('errorResponse', errorResponse);
+      }).fail(function(errorResponse) {
+      
             if (errorResponse.status === 500) {
                   $('#errorText').text('There was an error connecting to the server. Please try again in a few minutes');
             }
             
             $('#myModal').modal('show');
       });
-      console.log('done getting data');
+      
 }
 
 function clearModalContents() {
+
+      $('.modal-title').empty();
+      $('.modal-body').empty();
+      $('.modal-footer').empty();
+      // $('#myModal').modal('hide');
+}
+
+function addStudentclearErrorMessaging() {
+      $('#studentNameErrorContainer').empty();
+      $('#courseErrorContainer').empty();
+      $('#studentGradeErrorContainer').empty();
+}
+
+function clearModalErrorMessaging() {
+      $('#updateNameErrorContainer').empty();
+      $('#updateCourseErrorContainer').empty();
+      $('#updateGradeErrorContainer').empty();
+}
+
+function cancelModalAction(){
       $('.modal-title').empty();
       $('.modal-body').empty();
       $('.modal-footer').empty();
       $('#myModal').modal('hide');
+
 }

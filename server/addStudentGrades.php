@@ -67,7 +67,7 @@ if ($nameError === '' and $courseError === '' and $gradeError === '') {
     $stmt = $creds->prepare("INSERT INTO `studentGradeTable` (`name`,`course`,`grade`) VALUES (?,?,?)");
     $stmt->bind_param("ssi", $name, $course, $grade);
     $result = $stmt->execute();
-
+    print_r('result', $result);
     if ($result) {
         
         $output['success'] = true;

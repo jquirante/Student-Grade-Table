@@ -17,7 +17,7 @@ if ($deleteResult) {
     INSERT INTO studentGradeTable 
         (name, course, grade)
     VALUES
-        ('Justen','Computer Science 101', 100),
+        ('Justen','Computer Science', 100),
         ('Jake','Photography', 87),
         ('Melissa','History', 95),
         ('Jennifer','Data Structures and Algorithms', 77),

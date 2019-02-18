@@ -38,10 +38,13 @@ if ($idError === '') {
     if ($result) {
         $output['success'] = true;
     } else {
+        $output['success'] = true;
         $output['error'] = 'query failed';
     }
     
 
+} else {
+    $output['error'] = 'query failed';
 }
 
 $json_output = json_encode($output);

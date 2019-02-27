@@ -1,3 +1,4 @@
 .DS_Store
 .idea
 README.md
+server/mysql_creds.php

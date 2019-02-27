@@ -466,7 +466,7 @@ function handleGetData() {
 
       var ajaxOptions = {
             dataType: 'json',
-            url: 'http://localhost:8888/getStudentGrades.php',
+            url: 'server/getStudentGrades.php',
             method: 'post',
             
 
@@ -490,7 +490,7 @@ function handleGetData() {
 function addStudentToServer(name, course, grade) {
       
       var ajaxOptions = {
-            url: 'http://localhost:8888/addStudentGrades.php',
+            url: 'server/addStudentGrades.php',
             method: 'post',
             dataType: 'json',
             data : {
@@ -526,7 +526,7 @@ function addStudentToServer(name, course, grade) {
 function deleteStudentFromServer(studentId) {
 
       var ajaxOptions = {
-            url: 'http://localhost:8888/deleteStudentGrades.php',
+            url: 'server/deleteStudentGrades.php',
             method: 'post',
             dataType: 'json',
             data : {
@@ -566,7 +566,7 @@ function deleteStudentFromServer(studentId) {
 
 function saveUpdateToDb(studentInfo) {
       var ajaxOptions = {
-            url: 'http://localhost:8888/updateStudentGrades.php',
+            url: 'server/updateStudentGrades.php',
             method: 'post',
             dataType: 'json',
             data: studentInfo,
@@ -670,7 +670,7 @@ function refreshData() {
 
       var ajaxOptions = {
             dataType: 'json',
-            url: 'http://localhost:8888/refreshStudentGrades.php',
+            url: 'server/refreshStudentGrades.php',
             method: 'post',
             
 

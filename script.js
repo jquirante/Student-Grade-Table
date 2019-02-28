@@ -31,7 +31,7 @@ function initializeApp(){
       
       addClickHandlersToElements();
       handleGetData();
-      refreshData();
+      // refreshData();
 }
 
 /***************************************************************************************************

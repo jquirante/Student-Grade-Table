@@ -7,6 +7,12 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .avgGradeContainer {
+        display: block;
+        position: relative;
+        right: 0px;
+    }
+
     table {
         font-size: 10px;
     }
@@ -32,9 +38,21 @@
         position: relative;
         padding-left: 20px;
     }
+
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
 } 
 
 @media only screen and (min-width: 768px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
     table .btn {
         font-size: 10px;
     }
@@ -50,12 +68,27 @@
 } 
 
 @media only screen and (min-width: 992px) {
+
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+
+
+    }
+
     table .btn {
         font-size: 15px;
     }
 }
 
 @media only screen and (min-width: 1200px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
     #operationsTableHeader {
         position: relative;
         padding-left: 30px;

@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+    <title>Student Grade Table</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -32,11 +33,15 @@
         <div class="row col-sm-11 col-sm-offset-1">
             <!-- only show this element when the isnt on mobile -->
             <h1 class="col-xs-pull-1 hidden-xs col-sm-12 page-header">Student Grade Table
-                <small class="col-sm-offset-6">Grade Average : <span class="avgGrade label label-default">0</span></small>
+                <div class="avgGradeContainer ">
+                        <small >Grade Average : <span class="avgGrade label label-default">0</span></small>
+                </div>
             </h1>
             <!-- only show this element when the user gets to a mobile version -->
-            <h3 class="hidden-lg hidden-md hidden-sm col-xs-11 page-header">Student Grade Table
-                <small class="col-xs-9 pull-right">Grade Average :  <span class="avgGrade label label-default">0</span></small>
+            <h3 class="hidden-lg hidden-md hidden-sm col-xs-12 page-header">Student Grade Table
+                <div class="avgGradeContainer">
+                    <small>Grade Average :  <span class="avgGrade label label-default">0</span></small>
+                </div>
             </h3>
         </div>
         <form class="student-add-form col-sm-3 col-sm-push-8 media-heading">

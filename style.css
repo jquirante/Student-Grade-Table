@@ -109,6 +109,43 @@
 
     #operationsTableHeader {
         position: relative;
+        padding-left: 50px;
+    }
+
+    #gradeTableHeader {
+        position: relative;
+        padding-left: 24px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
+    #operationsTableHeader {
+        position: relative;
+        padding-left: 70px;
+    }
+
+    #gradeTableHeader {
+        position: relative;
+        padding-left: 30px;
+    }
+    
+}
+
+@media screen and (min-width: 1900px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
+    #operationsTableHeader {
+        position: relative;
         padding-left: 60px;
     }
 

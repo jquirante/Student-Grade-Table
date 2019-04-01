@@ -170,9 +170,10 @@
 
     #gradeTableHeader {
         position: relative;
-        padding-left: 41px;
+        padding-left: 44px;
     
     
+    }
 }
 @media screen and (min-width: 1900px) {
     .avgGradeContainer {
@@ -183,11 +184,12 @@
 
     #operationsTableHeader {
         position: relative;
-        padding-left: 60px;
+        padding-left: 80px;
     }
 
     #gradeTableHeader {
         position: relative;
-        padding-left: 24px;
+        padding-left: 44px;
+    
     }
 }

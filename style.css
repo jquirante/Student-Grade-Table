@@ -109,7 +109,7 @@
 
     #operationsTableHeader {
         position: relative;
-        padding-left: 60px;
+        padding-left: 50px;
     }
 
     #gradeTableHeader {
@@ -127,12 +127,12 @@
 
     #operationsTableHeader {
         position: relative;
-        padding-left: 80px;
+        padding-left: 70px;
     }
 
     #gradeTableHeader {
         position: relative;
-        padding-left: 32px;
+        padding-left: 25px;
     }
     
 }

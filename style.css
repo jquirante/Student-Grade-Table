@@ -137,6 +137,43 @@
     
 }
 
+@media screen and (min-width: 1725px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
+    #operationsTableHeader {
+        position: relative;
+        padding-left: 80px;
+    }
+
+    #gradeTableHeader {
+        position: relative;
+        padding-left: 34px;
+    }
+    
+}
+
+@media screen and (min-width: 1800px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
+    #operationsTableHeader {
+        position: relative;
+        padding-left: 75px;
+    }
+
+    #gradeTableHeader {
+        position: relative;
+        padding-left: 40px;
+    
+    
+}
 @media screen and (min-width: 1900px) {
     .avgGradeContainer {
         display: inline-block;

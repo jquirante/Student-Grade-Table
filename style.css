@@ -99,3 +99,21 @@
         padding-left: 15px;
     }
 }
+
+@media only screen and (min-width: 1440px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
+    #operationsTableHeader {
+        position: relative;
+        padding-left: 60px;
+    }
+
+    #gradeTableHeader {
+        position: relative;
+        padding-left: 24px;
+    }
+}

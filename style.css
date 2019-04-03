@@ -23,27 +23,11 @@
     #tableContainer {
         padding: 0;
     }
-    #gradeTableHeader {
-        position: relative;
-        padding-left: 25px;
-    }
-
-    #deleteContainer {
-        position: relative;
-    }
+    
 }
 
 @media only screen and (min-width: 600px) {
-    #gradeTableHeader {
-        position: relative;
-        padding-left: 20px;
-    }
-
-    .avgGradeContainer {
-        display: inline-block;
-        position: absolute;
-        right: 0;
-    }
+   
 } 
 
 @media only screen and (min-width: 768px) {
@@ -57,10 +41,6 @@
         font-size: 10px;
     }
 
-    #courseTableHeader {
-        position: relative;
-        padding-left: 20px;
-    }
 
     .student-add-form {
         right: -150px;
@@ -89,13 +69,51 @@
         right: 0;
     }
 
-    #operationsTableHeader {
-        position: relative;
-        padding-left: 30px;
+}
+
+@media only screen and (min-width: 1440px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
     }
 
-    #gradeTableHeader {
-        position: relative;
-        padding-left: 15px;
+    
+}
+
+@media screen and (min-width: 1600px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
     }
+
+    
+}
+
+@media screen and (min-width: 1725px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
+    
+}
+
+@media screen and (min-width: 1800px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
+}
+@media screen and (min-width: 1900px) {
+    .avgGradeContainer {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+
 }

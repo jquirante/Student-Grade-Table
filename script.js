@@ -114,51 +114,24 @@ function clearAddStudentFormInputs(){
  */
 function renderStudentOnDom(studentObject){
       
-      var tableRow = $('<tr>', {
-            // display: 'inline-block',
-            css: { 
-                  display: 'table',
-            },
-            scope: 'row',
-            class: 'col-xs-12',
-      });
+      var tableRow = $('<tr>');
 
       var tableName = $('<td>', {
-            css: { 
-                  display: 'inline-block',
-                  position: 'relative',
-                  'padding-top' : '8px',
-                  'padding-left': '15px',
-            },
             class: 'col-xs-3',
             text: studentObject.name,
       });
 
       var tableCourse = $('<td>', {
-            css: { 
-                  display: 'inline-block',
-                  position: 'relative',
-            },
             class: 'col-xs-3',
             text: studentObject.course,
       });
 
       var gradeContainer = $('<div>', {
-            css: { 
-                  display: 'inline-block',
-                  position: 'relative',
-                  
-            },
-            class: 'col-xs-2',
             text: studentObject.grade,
       });
 
       var tableGrade = $('<td>', {
-            css: { 
-                  display: 'inline-block',
-                  position: 'relative',
-            },
-            class: 'col-xs-2',
+            
             
             
       });
@@ -168,24 +141,12 @@ function renderStudentOnDom(studentObject){
       tableRow.append(tableName, tableCourse, tableGrade);
       
       var deleteContainer = $('<td>', {
-            css: { 
-                  display: 'inline-block',
-                  position: 'relative',
-                  
-            },
-            class: 'col-xs-4',
+            class: 'col-xs-3',
             id: 'deleteContainer',
       });
       
       var deleteButton = $('<button>', {
-            css: { 
-                  display: 'inline-block',
-                  position: 'relative',
-                  'margin-right': '5px'
-                  
-            },
             class: 'btn btn-danger',
-            // 'text-align': 'center',
             text: 'Delete',
             'data-student': studentObject.ID,
             on: {
@@ -195,7 +156,6 @@ function renderStudentOnDom(studentObject){
 
       var editButton = $('<button>', {
             class: 'btn btn-info',
-            // 'text-align': 'center',
             text: 'Edit',
             'data-student': studentObject.ID,
             on: {

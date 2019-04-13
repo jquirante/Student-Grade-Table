@@ -1,4 +1,4 @@
-.student-add-form {
+/* .student-add-form {
     margin-bottom: 30px;
 }
 
@@ -9,6 +9,11 @@
 .vertical-center {
     position: relative;
     top: 30vh;
+} */
+
+.forms > ul > li {
+    display: inline-block;
+    position: relative;
 }
 
 @media only screen and (max-width: 600px) {

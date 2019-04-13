@@ -677,3 +677,22 @@ function cancelModalAction(){
       $('#myModal').modal('hide');
 
 }
+
+function validateSignUpForm() {
+
+      
+}
+
+function sendSignUpInfo(){
+      console.log('sendSignUp');
+
+      var ajaxOptions = {
+            dataType: 'json',
+            url: 'server/accountSignUp.php',
+            method: 'post',
+            
+
+      };
+
+      $.ajax(ajaxOptions);
+}

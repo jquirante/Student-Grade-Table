@@ -45,7 +45,7 @@ function addClickHandlersToElements(){
       $('.btn-success').on('click', handleAddClicked);
       $('.btn-default').on('click', handleCancelClick);
       $('.btn-info').on('click', handleGetData);
-
+      $('.tab a').on('click', handleFormTabs);
       $('#myModal').on('hidden.bs.modal', function () { 
             
             clearModalContents();
@@ -447,6 +447,18 @@ function handleGetData() {
       
 }
 
+function handleFormTabs(e) {
+      console.log('handleformtabs');
+      e.preventDefault;
+
+      $(this).parent().addClass('active');
+      $(this).parent().siblings().removeClass('active');
+       
+      var href = $(this).attr('href');
+      $('.forms > form').hide();
+      $(href).fadeIn(500);
+}
+
 function addStudentToServer(name, course, grade) {
       
       var ajaxOptions = {
@@ -678,9 +690,10 @@ function cancelModalAction(){
 
 }
 
+
 function validateSignUpForm() {
 
-      
+
 }
 
 function sendSignUpInfo(){

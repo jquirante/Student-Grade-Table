@@ -5,15 +5,57 @@
 .errorText {
     text-align: center;
 }
+*/
+
+body {
+    background-color: teal;
+}
+
+#signUp { display: none}
+
 
 .vertical-center {
     position: relative;
-    top: 30vh;
-} */
+    top: 25vh;
+}
 
-.forms > ul > li {
+.vertical-center > form {
+    background-color: white;
+}
+
+.forms > .tab-group {
+    list-style: none;
+}
+
+.forms > .tab-group > .tab {
+    box-sizing: border-box;
     display: inline-block;
     position: relative;
+    width: 49%;
+    font-size: 0;
+    text-align: center;
+    padding: 20px;
+    background-color: lightgrey;
+}
+
+.forms > ul > li > a {
+    font-size: 2rem;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
+.form-title {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+.forms > .tab-group > .tab.active {
+    background-color: white;
+}
+
+.forms button {
+    margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 600px) {

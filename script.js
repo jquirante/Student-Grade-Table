@@ -692,18 +692,69 @@ function cancelModalAction(){
 
 
 function validateSignUpForm() {
+      console.log('validateSignUp');
+      var validatedForm = true;
+      
+      var signUpEmail = $('#signUpEmail').val();
+      var emailRegexPattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+      var signUpPass = $('#signUpPassword').val();
+      var passwordRegexPattern = /^(?=.*\d).{4,8}$/;
+      var confirmPass = $('#confirmedPass').val();
+      
+      if (emailRegexPattern.test(signUpEmail)) {
+            
+      } else {
+         $('#signUpEmailError').text('Please enter a valid email');
+         validatedForm = false;
+      }
 
+      if (passwordRegexPattern.test(signUpPass)) {
+
+      } else {
+         $('#signUpPasswordError').text('Please enter a valid password');
+         validatedForm = false;
+      }
+
+      if (signUpPass === confirmPass ) {
+
+      } else {
+         $('#signUpConfirmPassError').text('Passwords must match');
+         validatedForm = false;
+      }
+      
+      return validatedForm;
 
 }
 
-function sendSignUpInfo(){
-      console.log('sendSignUp');
+function handleSignIn() {
+      console.log('Sign In');
 
       var ajaxOptions = {
             dataType: 'json',
             url: 'server/accountSignUp.php',
             method: 'post',
             
+
+      };
+
+      $.ajax(ajaxOptions);
+}
+
+function sendSignUpInfo(){
+      console.log('sendSignUp');
+
+      var signUpEmail = $('#signUpEmail').val();
+      var signUpPass = $('#signUpEmail').val();
+
+      debugger;
+      var ajaxOptions = {
+            dataType: 'json',
+            url: 'server/accountSignUp.php',
+            method: 'post',
+            data: {
+                  signUpEmail,
+                  signUpPass
+            }
 
       };
 

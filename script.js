@@ -693,6 +693,7 @@ function cancelModalAction(){
 
 function validateSignUpForm() {
       console.log('validateSignUp');
+      
       var validatedForm = true;
       
       var signUpEmail = $('#signUpEmail').val();
@@ -721,7 +722,7 @@ function validateSignUpForm() {
          $('#signUpConfirmPassError').text('Passwords must match');
          validatedForm = false;
       }
-      
+
       return validatedForm;
 
 }

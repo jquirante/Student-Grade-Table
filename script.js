@@ -449,7 +449,7 @@ function handleGetData() {
 
 function handleFormTabs(e) {
       console.log('handleformtabs');
-      e.preventDefault;
+      e.preventDefault();
 
       $(this).parent().addClass('active');
       $(this).parent().siblings().removeClass('active');
@@ -699,7 +699,7 @@ function validateSignUpForm() {
       var signUpEmail = $('#signUpEmail').val();
       var emailRegexPattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
       var signUpPass = $('#signUpPassword').val();
-      var passwordRegexPattern = /^(?=.*\d).{4,8}$/;
+      var passwordRegexPattern = /^(?=.*\d).{4,25}$/;
       var confirmPass = $('#confirmedPass').val();
       
       if (emailRegexPattern.test(signUpEmail)) {
@@ -712,7 +712,7 @@ function validateSignUpForm() {
       if (passwordRegexPattern.test(signUpPass)) {
 
       } else {
-         $('#signUpPasswordError').text('Please enter a valid password');
+         $('#signUpPasswordError').text('Password must be between 4 and 25 digits long and include at least one numeric digit.');
          validatedForm = false;
       }
 
@@ -723,18 +723,20 @@ function validateSignUpForm() {
          validatedForm = false;
       }
 
-      return validatedForm;
+      if (validatedForm = true) {
+            sendSignUpInfo();
+      };
 
 }
 
 function handleSignIn() {
       console.log('Sign In');
+      
 
       var ajaxOptions = {
             dataType: 'json',
-            url: 'server/accountSignUp.php',
+            url: 'server/accountLogin.php',
             method: 'post',
-            
 
       };
 

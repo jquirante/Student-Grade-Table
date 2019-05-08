@@ -45,7 +45,7 @@ function addClickHandlersToElements(){
       $('.btn-success').on('click', handleAddClicked);
       $('.btn-default').on('click', handleCancelClick);
       $('.btn-info').on('click', handleGetData);
-
+      $('.tab a').on('click', handleFormTabs);
       $('#myModal').on('hidden.bs.modal', function () { 
             
             clearModalContents();
@@ -447,6 +447,18 @@ function handleGetData() {
       
 }
 
+function handleFormTabs(e) {
+      console.log('handleformtabs');
+      e.preventDefault();
+
+      $(this).parent().addClass('active');
+      $(this).parent().siblings().removeClass('active');
+       
+      var href = $(this).attr('href');
+      $('.forms form').hide();
+      $(href).css("display", "block");
+}
+
 function addStudentToServer(name, course, grade) {
       
       var ajaxOptions = {
@@ -676,4 +688,78 @@ function cancelModalAction(){
       $('.modal-footer').empty();
       $('#myModal').modal('hide');
 
+}
+
+
+function validateSignUpForm() {
+      console.log('validateSignUp');
+      
+      var validatedForm = true;
+      
+      var signUpEmail = $('#signUpEmail').val();
+      var emailRegexPattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+      var signUpPass = $('#signUpPassword').val();
+      var passwordRegexPattern = /^(?=.*\d).{4,25}$/;
+      var confirmPass = $('#confirmedPass').val();
+      
+      if (emailRegexPattern.test(signUpEmail)) {
+            
+      } else {
+         $('#signUpEmailError').text('Please enter a valid email');
+         validatedForm = false;
+      }
+
+      if (passwordRegexPattern.test(signUpPass)) {
+
+      } else {
+         $('#signUpPasswordError').text('Password must be between 4 and 25 digits long and include at least one numeric digit.');
+         validatedForm = false;
+      }
+
+      if (signUpPass === confirmPass ) {
+
+      } else {
+         $('#signUpConfirmPassError').text('Passwords must match');
+         validatedForm = false;
+      }
+
+      if (validatedForm = true) {
+            sendSignUpInfo();
+      };
+
+}
+
+function handleSignIn() {
+      console.log('Sign In');
+      
+
+      var ajaxOptions = {
+            dataType: 'json',
+            url: 'server/accountLogin.php',
+            method: 'post',
+
+      };
+
+      $.ajax(ajaxOptions);
+}
+
+function sendSignUpInfo(){
+      console.log('sendSignUp');
+
+      var signUpEmail = $('#signUpEmail').val();
+      var signUpPass = $('#signUpEmail').val();
+
+      debugger;
+      var ajaxOptions = {
+            dataType: 'json',
+            url: 'server/accountSignUp.php',
+            method: 'post',
+            data: {
+                  signUpEmail,
+                  signUpPass
+            }
+
+      };
+
+      $.ajax(ajaxOptions);
 }

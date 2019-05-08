@@ -7,8 +7,13 @@
 }
 */
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color: teal;
+    background-color: rgb(26, 25, 114);
 }
 
 #signUp { display: none}
@@ -20,25 +25,34 @@ body {
 }
 
 .vertical-center > form {
-    background-color: white;
+    background-color: rgb(64, 62, 177);
+}
+
+.forms form {
+    padding: 15px;
 }
 
 .forms > .tab-group {
+    color: white;
     list-style: none;
+    background-color: rgb(64, 62, 177);
+    padding: 50px 75px;
 }
 
+.form-container > form {
+    color: white;
+    background-color: rgb(64, 62, 177);
+}
 .forms > .tab-group > .tab {
-    box-sizing: border-box;
     display: inline-block;
     position: relative;
-    width: 49%;
     font-size: 0;
     text-align: center;
-    padding: 20px;
-    background-color: lightgrey;
+    padding-right: 10px;
 }
 
 .forms > ul > li > a {
+    color: grey;
     font-size: 2rem;
     text-decoration: none;
     display: inline-block;
@@ -50,8 +64,8 @@ body {
     font-size: 3.5rem;
     margin: 20px 0;
 }
-.forms > .tab-group > .tab.active {
-    background-color: white;
+.forms > .tab-group > .tab.active a {
+    color: white;
 }
 
 .forms button {

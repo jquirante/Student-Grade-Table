@@ -455,8 +455,8 @@ function handleFormTabs(e) {
       $(this).parent().siblings().removeClass('active');
        
       var href = $(this).attr('href');
-      $('.forms > form').hide();
-      $(href).fadeIn(500);
+      $('.forms form').hide();
+      $(href).css("display", "block");
 }
 
 function addStudentToServer(name, course, grade) {

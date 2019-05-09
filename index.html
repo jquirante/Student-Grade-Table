@@ -32,7 +32,10 @@
                     <input id="confirmedPass" class="form-control" type="password">
                     <div id="signUpConfirmPassError" class="error"></div>
                 </div>
-                <button class="btn btn-primary" type="button" onclick="validateSignUpForm()">Sign Up</button>
+                <div class="button-container form-group col-xs-10 col-xs-offset-1">
+                    <button class="btn btn-primary blue darken-1" type="button" onclick="validateSignUpForm()">Sign Up</button>
+                </div>
+                
             </form>
             <form class="col-xs-4 col-xs-offset-4 container" id="signIn">
                 <div class="form-group col-xs-10 col-xs-offset-1">
@@ -45,7 +48,9 @@
                     <input type="password" name="password" class="form-control">
                     <div></div>
                 </div>
-                <button type="button" class="btn" onclick="handleSignIn()">Sign In</button>
+                <div class="button-container form-group col-xs-10 col-xs-offset-1">
+                    <button type="button" class="btn btn-primary" onclick="handleSignIn()">Sign In</button>
+                </div>
                 
             </form>
 

@@ -72,6 +72,17 @@ body {
     margin-bottom: 20px;
 }
 
+.button-container > .btn {
+    width: 100%;
+}
+
+.form-group > * {
+    border-radius: 15px;
+}
+
+.form-group > input {
+    height: 40px;
+}
 .error {
     color: red;
 }

@@ -36,7 +36,11 @@ body {
     color: white;
     list-style: none;
     background-color: rgb(64, 62, 177);
-    padding: 50px 75px;
+    padding: 75px 30px 20px 75px;
+}
+
+.form-container form {
+    min-height: 375px;
 }
 
 .form-container > form {
@@ -59,25 +63,34 @@ body {
     position: relative;
     text-align: center;
 }
-
+.form-container {
+    background-image: url('/assets/images/signin_background.png');
+}
+.form-container label {
+    text-transform: uppercase;
+}
 .form-title {
     font-size: 3.5rem;
     margin: 20px 0;
 }
 .forms > .tab-group > .tab.active a {
     color: white;
+    border-bottom: 3px solid white;
 }
 
 .forms button {
+    text-transform: uppercase;
     margin-bottom: 20px;
+    height: 45px;
 }
 
 .button-container > .btn {
     width: 100%;
+    margin-top: 10px;
 }
 
 .form-group > * {
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
 .form-group > input {

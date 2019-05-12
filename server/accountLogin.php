@@ -16,13 +16,17 @@ if ( ! empty($_POST) ) {
         $stmt->execute();
         $result = $stmt->get_result();
         $output = $result;
-        print_r ($_SERVER);
         $user = $result->fetch_object();
-        print_r ($user);
+        
+        $output = $user;
+        // if ( password_verify( hash("sha256",$_POST['password']), $user->password ) ) {
+        //     $_SESSION['user_id'] = $user->ID;
+        //     $output = true;
+    	// }
     }
 }
 
-json_encode($output);
+$json_output = json_encode($output);
 
-print($output);
+print($json_output);
 ?>

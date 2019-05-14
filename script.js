@@ -731,13 +731,18 @@ function validateSignUpForm() {
 
 function handleSignIn() {
       console.log('Sign In');
-      
+      debugger;
+      var loginEmail = $('#login-email').val();
+      var loginPass = $('#login-password').val();
 
       var ajaxOptions = {
             dataType: 'json',
             url: 'server/accountLogin.php',
             method: 'post',
-
+            data: {
+                  loginEmail,
+                  loginPass
+            }
       };
 
       $.ajax(ajaxOptions);
@@ -747,7 +752,7 @@ function sendSignUpInfo(){
       console.log('sendSignUp');
 
       var signUpEmail = $('#signUpEmail').val();
-      var signUpPass = $('#signUpEmail').val();
+      var signUpPass = $('#signUpPassword').val();
 
       debugger;
       var ajaxOptions = {

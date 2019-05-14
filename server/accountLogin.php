@@ -7,19 +7,20 @@ require_once('mysql_creds.php');
 $output = null;
 
 if ( ! empty($_POST) ) {
-    if ( isset($POST["email"]) && isset($POST["password"])) {
+    if ( isset($_POST["loginEmail"]) && isset($_POST["loginPass"])) {
 
-        $email = $POST["email"];
-        $password = $POST["password"];
-        $stmt = $creds->prepare("SELECT * WHERE email = ?");
+        $email = $_POST["loginEmail"];
+        $password = $_POST["loginPass"];
+        $stmt = $creds->prepare("SELECT * FROM `studentGradeTableAccounts` WHERE email = ?");
         $stmt->bind_param("s", $email);
+        
         $stmt->execute();
+        
         $result = $stmt->get_result();
-        $output = $result;
-        $user = $result->fetch_object();
+        $user = mysqli_fetch_assoc($result);
         
         $output = $user;
-        // if ( password_verify( hash("sha256",$_POST['password']), $user->password ) ) {
+        // if ( password_verify( hash("sha256",$_POST["loginPass"]), $user->password ) ) {
         //     $_SESSION['user_id'] = $user->ID;
         //     $output = true;
     	// }

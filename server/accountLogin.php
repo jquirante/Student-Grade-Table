@@ -17,10 +17,25 @@ if ( ! empty($_POST) ) {
         $stmt->execute();
         
         $result = $stmt->get_result();
-        $user = mysqli_fetch_assoc($result);
-        
-        $output = $user;
-        // if ( password_verify( hash("sha256",$_POST["loginPass"]), $user->password ) ) {
+        $user = $result->fetch_object();
+        // $result = $stmt->get_result();
+        // $user = $result->fetch_object();
+        // $output = $user->password;
+
+        $output = $result;
+        // $inputPass = $_POST["loginPass"];
+        // $dbPass = $user->password;
+
+        // $test = password_verify( $_POST["loginPass"], $user->password);
+        // $test2 = $inputPass == $dbPass;
+
+        // $output = [
+        //     "inputPass"=>$inputPass,
+        //     "dbPass"=>$dbPass,
+        //     "test"=>$test,
+        //     "test2"=>$test2
+        // ];
+        // if ( password_verify( $_POST["loginPass"], $user->password) ) {
         //     $_SESSION['user_id'] = $user->ID;
         //     $output = true;
     	// }

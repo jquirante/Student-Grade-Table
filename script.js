@@ -742,6 +742,10 @@ function handleSignIn() {
             data: {
                   loginEmail,
                   loginPass
+            },
+            success: function() {
+                  debugger;
+                  Location.assign('http://localhost:8888/table.html');
             }
       };
 

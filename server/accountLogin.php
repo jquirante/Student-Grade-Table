@@ -41,7 +41,7 @@ $output = null;
                     $_SESSION["userId"] = $row["ID"];
                     $_SESSION["email"] = $row["email"];
 
-                    header("Location: ../index.php?login=success");
+                    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/table.html');
                     exit();
                 }
                 else {

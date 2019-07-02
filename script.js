@@ -712,7 +712,7 @@ function validateSignUpForm() {
       if (passwordRegexPattern.test(signUpPass)) {
 
       } else {
-         $('#signUpPasswordError').text('Password must be between 4 and 25 digits long and include at least one numeric digit.');
+         $('#signUpPasswordError').text('Password must be between 4 and 25 digits long and include at least one numeric digit');
          validatedForm = false;
       }
 
@@ -723,7 +723,7 @@ function validateSignUpForm() {
          validatedForm = false;
       }
 
-      if (validatedForm = true) {
+      if (validatedForm) {
             sendSignUpInfo();
       };
 
@@ -731,7 +731,7 @@ function validateSignUpForm() {
 
 function handleSignIn() {
       console.log('Sign In');
-      debugger;
+      
       var loginEmail = $('#login-email').val();
       var loginPass = $('#login-password').val();
 
@@ -744,8 +744,12 @@ function handleSignIn() {
                   loginPass
             },
             success: function() {
-                  debugger;
-                  Location.assign('http://localhost:8888/table.html');
+                 
+                  window.location.href = 'http://localhost:8888/table.html';
+            },
+            error: function() {
+                  console.log('Wrong Creds!');
+                  $('#signInError').text('Wrong Username or Password');
             }
       };
 
@@ -753,12 +757,13 @@ function handleSignIn() {
 }
 
 function sendSignUpInfo(){
+      
       console.log('sendSignUp');
 
       var signUpEmail = $('#signUpEmail').val();
       var signUpPass = $('#signUpPassword').val();
 
-      debugger;
+      
       var ajaxOptions = {
             dataType: 'json',
             url: 'server/accountSignUp.php',
@@ -766,7 +771,11 @@ function sendSignUpInfo(){
             data: {
                   signUpEmail,
                   signUpPass
-            }
+            },
+            success: function() {
+                  
+                  window.location.href = 'http://localhost:8888/table.html';
+            },
 
       };
 

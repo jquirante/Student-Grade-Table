@@ -693,7 +693,7 @@ function cancelModalAction(){
 
 function validateSignUpForm() {
       console.log('validateSignUp');
-      debugger;
+      
       var validatedForm = true;
       
       var signUpEmail = $('#signUpEmail').val();
@@ -731,7 +731,7 @@ function validateSignUpForm() {
 
 function handleSignIn() {
       console.log('Sign In');
-      debugger;
+      
       var loginEmail = $('#login-email').val();
       var loginPass = $('#login-password').val();
 
@@ -744,7 +744,7 @@ function handleSignIn() {
                   loginPass
             },
             success: function() {
-                  debugger;
+                 
                   window.location.href = 'http://localhost:8888/table.html';
             },
             error: function() {
@@ -757,13 +757,13 @@ function handleSignIn() {
 }
 
 function sendSignUpInfo(){
-      debugger;
+      
       console.log('sendSignUp');
 
       var signUpEmail = $('#signUpEmail').val();
       var signUpPass = $('#signUpPassword').val();
 
-      debugger;
+      
       var ajaxOptions = {
             dataType: 'json',
             url: 'server/accountSignUp.php',
@@ -773,7 +773,7 @@ function sendSignUpInfo(){
                   signUpPass
             },
             success: function() {
-                  debugger;
+                  
                   window.location.href = 'http://localhost:8888/table.html';
             },
 

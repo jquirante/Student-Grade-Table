@@ -693,7 +693,7 @@ function cancelModalAction(){
 
 function validateSignUpForm() {
       console.log('validateSignUp');
-      
+      debugger;
       var validatedForm = true;
       
       var signUpEmail = $('#signUpEmail').val();
@@ -712,7 +712,7 @@ function validateSignUpForm() {
       if (passwordRegexPattern.test(signUpPass)) {
 
       } else {
-         $('#signUpPasswordError').text('Password must be between 4 and 25 digits long and include at least one numeric digit.');
+         $('#signUpPasswordError').text('Password must be between 4 and 25 digits long and include at least one numeric digit');
          validatedForm = false;
       }
 
@@ -723,7 +723,7 @@ function validateSignUpForm() {
          validatedForm = false;
       }
 
-      if (validatedForm = true) {
+      if (validatedForm) {
             sendSignUpInfo();
       };
 
@@ -745,7 +745,11 @@ function handleSignIn() {
             },
             success: function() {
                   debugger;
-                  Location.assign('http://localhost:8888/table.html');
+                  window.location.href = 'http://localhost:8888/table.html';
+            },
+            error: function() {
+                  console.log('Wrong Creds!');
+                  $('#signInError').text('Wrong Username or Password');
             }
       };
 
@@ -753,6 +757,7 @@ function handleSignIn() {
 }
 
 function sendSignUpInfo(){
+      debugger;
       console.log('sendSignUp');
 
       var signUpEmail = $('#signUpEmail').val();
@@ -766,7 +771,11 @@ function sendSignUpInfo(){
             data: {
                   signUpEmail,
                   signUpPass
-            }
+            },
+            success: function() {
+                  debugger;
+                  window.location.href = 'http://localhost:8888/table.html';
+            },
 
       };
 

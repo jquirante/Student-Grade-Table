@@ -9,7 +9,7 @@ $output = null;
     $password = $_POST["loginPass"];
 
     if (empty($email) || empty($password)) {
-        print("EMPTY PASSWORD OR EMAIL");
+        // print("EMPTY PASSWORD OR EMAIL");
         exit();
     }
     else {
@@ -17,7 +17,7 @@ $output = null;
         $stmt = mysqli_stmt_init($creds);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            print("SQL ERROR");
+            // print("SQL ERROR");
             exit();
 
         } else {
@@ -32,27 +32,27 @@ $output = null;
                 $pwdCheck = $hashedInputPwd == $row["password"];
 
                 if ($pwdCheck == false) {
-                    print("WRONG PASSWORD");
-                    print($hashedInputPwd);
-                    print($row["password"]);
+                    // print("WRONG PASSWORD");
+                    // print($hashedInputPwd);
+                    // print($row["password"]);
                     exit();
                 } else if ($pwdCheck == true) {
                     session_start();
                     $_SESSION["userId"] = $row["ID"];
                     $_SESSION["email"] = $row["email"];
 
-                    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/table.html');
-                    exit();
+                    // header('Location: http://'.$_SERVER['HTTP_HOST'].'/table.php?Message=Success');
+                    $output = 'success';
                 }
                 else {
-                    print("WRONG PASSWORD");
+                    // print("WRONG PASSWORD");
                     exit();
                 }
             } else {
-                print("NO USER IN DB");
+                // print("NO USER IN DB");
                 exit();
             }
-
+ 
 
         }
 

@@ -5,11 +5,14 @@
 
     require_once('mysql_creds.php');
 
+    session_start();
+
     $output = [
         'success' => false
     ];
 
-    $stmt = $creds->prepare("SELECT * from `studentGradeTable`");
+    $stmt = $creds->prepare("SELECT * from `studentGradeTable` WHERE `accountID` = ?");
+    mysqli_stmt_bind_param($stmt, "i", $_SESSION["userId"]);
     $stmt->execute();
     $result = $stmt->get_result();
 

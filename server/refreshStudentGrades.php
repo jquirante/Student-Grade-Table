@@ -15,18 +15,18 @@ $deleteResult = $deleteStmt->execute();
 if ($deleteResult) {
     $insertStmt = $creds->prepare("
     INSERT INTO studentGradeTable 
-        (name, course, grade)
+        (name, course, grade, accountID)
     VALUES
-        ('Justen','Computer Science', 100),
-        ('Jake','Photography', 87),
-        ('Melissa','History', 95),
-        ('Jennifer','Data Structures and Algorithms', 77),
-        ('Alyssa','Strength and Conditiong', 93),
-        ('John','Psychology', 63),
-        ('Nicole','Introduction to Piano', 88),
-        ('Sasha','Graphic Design', 73),
-        ('Brian','Public Speaking', 91),
-        ('Dan','World Religion', 75)
+        ('Justen','Computer Science', 100, 15),
+        ('Jake','Photography', 87, 15),
+        ('Melissa','History', 95, 15),
+        ('Jennifer','Data Structures and Algorithms', 77, 15),
+        ('Alyssa','Strength and Conditiong', 93, 15),
+        ('John','Psychology', 63, 15),
+        ('Nicole','Introduction to Piano', 88, 15),
+        ('Sasha','Graphic Design', 73, 15),
+        ('Brian','Public Speaking', 91, 15),
+        ('Dan','World Religion', 75, 15)
     ");
 
     $insertResult = $insertStmt->execute();

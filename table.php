@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (isset($_SESSION['userId']))
+{
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -36,12 +42,14 @@
                 <div class="avgGradeContainer ">
                         <small >Grade Average : <span class="avgGrade label label-default">0</span></small>
                 </div>
+                <button id="signout"><a href="/logout.php">Logout</a></button>
             </h1>
             <!-- only show this element when the user gets to a mobile version -->
             <h3 class="hidden-lg hidden-md hidden-sm col-xs-12 page-header">Student Grade Table
                 <div class="avgGradeContainer">
                     <small>Grade Average :  <span class="avgGrade label label-default">0</span></small>
                 </div>
+                <button><a href="/logout.php">Logout</a></button>
             </h3>
         </div>
         <form class="student-add-form col-sm-3 col-sm-push-8 media-heading">
@@ -91,3 +99,11 @@
 
 </html>
 
+<?php
+}
+else
+{
+     echo 'Sorry please login first before visiting this page!'; //also a redirect can be made here instead.
+}
+
+?>

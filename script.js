@@ -46,6 +46,7 @@ function addClickHandlersToElements(){
       $('.btn-default').on('click', handleCancelClick);
       $('.btn-info').on('click', handleGetData);
       $('.tab a').on('click', handleFormTabs);
+      $('#signout').on('click', handleLogout);
       $('#myModal').on('hidden.bs.modal', function () { 
             
             clearModalContents();
@@ -745,7 +746,7 @@ function handleSignIn() {
             },
             success: function() {
                  
-                  window.location.href = 'http://localhost:8888/table.html';
+                  window.location.href = 'http://localhost:8888/table.php';
             },
             error: function() {
                   console.log('Wrong Creds!');
@@ -774,10 +775,24 @@ function sendSignUpInfo(){
             },
             success: function() {
                   
-                  window.location.href = 'http://localhost:8888/table.html';
+                  window.location.href = 'http://localhost:8888/table.php';
             },
 
       };
 
       $.ajax(ajaxOptions);
+}
+
+function handleLogout () {
+      
+      console.log('LOGOUT');
+
+      var ajaxOptions = {
+            dataType: 'json',
+            url: 'server/logout.php',
+            method: 'post',
+            success: function () {
+                  window.location.href = 'http://localhost:8888/'
+            }
+      }
 }

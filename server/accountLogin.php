@@ -38,6 +38,7 @@ $output = null;
                     exit();
                 } else if ($pwdCheck == true) {
                     session_start();
+                    $_SESSION['loggedin'] = true;
                     $_SESSION["userId"] = $row["ID"];
                     $_SESSION["email"] = $row["email"];
 

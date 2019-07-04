@@ -18,7 +18,12 @@ $stmt->bind_param("ss", $email, $passwordEnc);
 $result = $stmt->execute();
 
 if ($result) {
-        
+
+    $last_id = $creds->insert_id;
+    session_start();
+    $_SESSION['loggedin'] = true;
+    $_SESSION["userId"] = $last_id;
+    // $_SESSION["email"] = $row["email"];
     $output['success'] = true;
     
 } else {

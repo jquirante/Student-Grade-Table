@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if (isset($_SESSION['userId']))
 {
 ?>
@@ -103,7 +104,7 @@ if (isset($_SESSION['userId']))
 }
 else
 {
-     echo 'Sorry please login first before visiting this page!'; //also a redirect can be made here instead.
+    header("Location: index.php");//also a redirect can be made here instead.
 }
 
 ?>

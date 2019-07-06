@@ -774,9 +774,12 @@ function sendSignUpInfo(){
                   signUpPass
             },
             success: function() {
-                  
+                  debugger;
                   window.location.href = 'http://localhost:8888/table.php';
             },
+            error: function() {
+                  $('#signUpError').text('An account with this email is already registered. Please signup with a different account.');
+            }
 
       };
 

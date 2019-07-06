@@ -774,7 +774,6 @@ function sendSignUpInfo(){
                   signUpPass
             },
             success: function() {
-                  debugger;
                   window.location.href = 'http://localhost:8888/table.php';
             },
             error: function() {

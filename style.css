@@ -51,7 +51,7 @@ body {
     list-style: none;
     background-color: rgb(64, 62, 177);
     background-color: rgba(255, 255, 255, 0.747);
-    padding: 75px 30px 20px 75px;
+    padding: 0px 0px 20px 37px;
 }
 
 .form-container form {
@@ -80,7 +80,7 @@ body {
     text-align: center;
 }
 .form-container {
-    background-image: url('/assets/images/signin_background.png');
+    /* background-image: url('/assets/images/signin_background.png'); */
 }
 .form-container label {
     text-transform: uppercase;
@@ -111,6 +111,14 @@ body {
 
 .form-group > input {
     height: 40px;
+}
+
+.forgot-password {
+    text-align: center;
+}
+
+.currentMember-signin{
+    text-align: center;
 }
 .error {
     text-align: center;
@@ -157,6 +165,8 @@ body {
     .student-add-form {
         right: -150px;
     }
+
+
 } 
 
 @media only screen and (min-width: 992px) {

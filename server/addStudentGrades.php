@@ -5,9 +5,12 @@ header("Access-Control-Allow-Headers: *");
 
 require_once('mysql_creds.php');
 
+session_start();
+
 $name = $_POST["name"];
 $course = $_POST["course"];
 $grade = $_POST["grade"];
+$accountId = $_SESSION['userId'];
 
 $nameError = '';
 $courseError = '';
@@ -64,8 +67,8 @@ if ($nameError === '' and $courseError === '' and $gradeError === '') {
         
     // }
 
-    $stmt = $creds->prepare("INSERT INTO `studentGradeTable` (`name`,`course`,`grade`) VALUES (?,?,?)");
-    $stmt->bind_param("ssi", $name, $course, $grade);
+    $stmt = $creds->prepare("INSERT INTO `studentGradeTable` (`name`,`course`,`grade`, `accountID`) VALUES (?,?,?,?)");
+    $stmt->bind_param("ssii", $name, $course, $grade, $accountId);
     $result = $stmt->execute();
     
     if ($result) {

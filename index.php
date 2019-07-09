@@ -13,7 +13,7 @@
     <div class="login-wrapper ">
         <div class="vertical-center forms col-xs-12">
             <ul class="col-xs-12 col-sm-4 col-sm-offset-4 tab-group">
-                <li class="tab active"><a href="#signIn">SIGN IN</a></li>
+                <li class="tab active"><a id="signInTab" href="#signIn">SIGN IN</a></li>
                 <li class="tab"><a href="#signUp">SIGN UP</a></li>
             </ul>
             <div class="form-container col-xs-12">
@@ -40,9 +40,9 @@
                         <button class="btn btn-primary " type="button" onclick="validateSignUpForm()">Sign Up</button>
                     </div>
                     <div class="button-container form-group col-xs-12 currentMember-signin">
-                            <hr>
-                            <a>Already a Member</a>
-                        </div>
+                        <hr>
+                        <a id="signInFromSignUp">Already a Member?</a>
+                    </div>
                     
                 </form>
                 <form class="col-xs-12 col-sm-4 col-sm-offset-4 container" id="signIn">
@@ -51,20 +51,20 @@
                         </div>
                     <div class="form-group col-xs-12">
                         <label>Email</label>
-                        <input id="login-email" class="form-control" name="email" type="email">
+                        <input id="login-email" class="form-control" name="email" type="email" value="testaccount@sgt.com">
                     </div>
                     <div class="form-group col-xs-12">
                         <label>Password</label>
-                        <input id="login-password" type="password" name="password" class="form-control">
+                        <input id="login-password" type="password" name="password" class="form-control" value="asdf1234">
                         <div></div>
                     </div>
                     <div class="button-container form-group col-xs-12">
                         <button type="button" class="btn btn-primary" onclick="handleSignIn()">Sign In</button>
                     </div>
-                    <div class="button-container form-group col-xs-12 forgot-password">
+                    <!-- <div class="button-container form-group col-xs-12 forgot-password">
                         <hr>
                         <a>Forgot Password</a>
-                    </div>
+                    </div> -->
                     
                 </form>
     

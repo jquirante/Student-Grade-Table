@@ -47,6 +47,7 @@ function addClickHandlersToElements(){
       $('.btn-info').on('click', handleGetData);
       $('.tab a').on('click', handleFormTabs);
       $('#signout').on('click', handleLogout);
+      $('#signInFromSignUp').on('click', redirectSignInFromSignUp);
       $('#myModal').on('hidden.bs.modal', function () { 
             
             clearModalContents();
@@ -797,4 +798,13 @@ function handleLogout () {
                   window.location.href = 'http://localhost:8888/'
             }
       }
+}
+
+function redirectSignInFromSignUp() {
+      $('.tab.active').removeClass('active');
+      $('#signInTab').parent().addClass('active');
+
+      var href = $('#signIn').attr('href');
+      $('.forms form').hide();
+      $('#signIn').css("display", "block");
 }

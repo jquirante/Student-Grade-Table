@@ -125,6 +125,16 @@ body {
     color: red;
 }
 
+#signout {
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 5px;  
+}
+
+#signout a {
+    font-weight: normal;
+    color: black;
+}
 @media only screen and (max-width: 600px) {
     .avgGradeContainer {
         display: block;

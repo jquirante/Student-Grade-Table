@@ -43,14 +43,14 @@ if (isset($_SESSION['userId']))
                 <div class="avgGradeContainer ">
                         <small >Grade Average : <span class="avgGrade label label-default">0</span></small>
                 </div>
-                <button id="signout"><a href="/logout.php">Logout</a></button>
+                <button id="signout" class="btn-default"><a href="/logout.php">Logout</a></button>
             </h1>
             <!-- only show this element when the user gets to a mobile version -->
             <h3 class="hidden-lg hidden-md hidden-sm col-xs-12 page-header">Student Grade Table
                 <div class="avgGradeContainer">
                     <small>Grade Average :  <span class="avgGrade label label-default">0</span></small>
                 </div>
-                <button><a href="/logout.php">Logout</a></button>
+                <button id="signout" class="btn-default"><a href="/logout.php">Logout</a></button>
             </h3>
         </div>
         <form class="student-add-form col-sm-3 col-sm-push-8 media-heading">

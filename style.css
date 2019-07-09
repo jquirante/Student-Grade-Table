@@ -135,6 +135,13 @@ body {
     font-weight: normal;
     color: black;
 }
+
+.noStudentDataMessage {
+    display: none;
+    text-align: center;
+    color: grey;
+    font-size: 20px;
+}
 @media only screen and (max-width: 600px) {
     .avgGradeContainer {
         display: block;

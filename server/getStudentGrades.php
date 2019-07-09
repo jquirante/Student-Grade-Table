@@ -30,7 +30,8 @@
 
         } else {
             // No data
-            $output['error'] = 'No data';
+            $output['success'] = true;
+            $output['data'] = $data;
         }
     
     } else {

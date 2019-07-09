@@ -92,7 +92,9 @@ if (isset($_SESSION['userId']))
                 </thead>
                 <tbody>
                 </tbody>
+                
             </table>
+            <div class="noStudentDataMessage col-sm-12 col-sm-push-1">No Student Data Found. Post some Grades!</div>
         </div>
         
     </div>

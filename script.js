@@ -259,6 +259,11 @@ function renderStudentOnDom(studentObject){
             row.remove();
             
             deleteStudentFromServer(studentID);
+            if (student_array.length === 0) {
+                  $('.noStudentDataMessage').show();
+            } else {
+                  $('.noStudentDataMessage').hide();
+            }
             calculateGradeAverage(student_array);
 
             
@@ -382,6 +387,7 @@ function renderStudentOnDom(studentObject){
  * @calls renderStudentOnDom, calculateGradeAverage, renderGradeAverage
  */
 function updateStudentList(studentArray){
+
       $('.student-list tbody tr').remove();
 
       for ( var student = 0; student < studentArray.length; student++ ) {
@@ -425,7 +431,7 @@ function renderGradeAverage(numberAverage){
 
 
 function handleGetData() {
-
+      
       var ajaxOptions = {
             dataType: 'json',
             url: 'server/getStudentGrades.php',
@@ -435,6 +441,8 @@ function handleGetData() {
       };
 
       $.ajax(ajaxOptions).then(function(response){
+            
+            handleNoStudentData(response);
             
             student_array = response.data;
             updateStudentList(student_array);
@@ -807,4 +815,12 @@ function redirectSignInFromSignUp() {
       var href = $('#signIn').attr('href');
       $('.forms form').hide();
       $('#signIn').css("display", "block");
+}
+
+function handleNoStudentData(response) {
+      if (response.data.length === 0) {
+            $('.noStudentDataMessage').show();
+      } else {
+            $('.noStudentDataMessage').hide();
+      }
 }
